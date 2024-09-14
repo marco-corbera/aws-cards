@@ -1,0 +1,1594 @@
+[
+  {
+    "question": "1. What is AWS Identity and Access Management (IAM)?",
+    "answer": "AWS Identity and Access Management (IAM) is a web service that helps securely control access to AWS resources. It controls who is authenticated (signed in) and authorized (has permissions) to use resources."
+  },
+  {
+    "question": "2. What are the key elements of an IAM policy structure?",
+    "answer": "The key elements of an IAM policy structure are: Version: The policy language version, usually '2012-10-17'. Id: An optional identifier for the policy. Statement: One or more individual statements (required). Sid: An optional identifier for the statement. Effect: Specifies whether the statement allows or denies access (Allow or Deny). Principal: The account, user, or role to which this policy applies. Action: List of actions allowed or denied by the policy. Resource: List of resources to which the actions apply. Condition: Optional conditions for when this policy is in effect."
+  },
+  {
+    "question": "3. What is the least privilege principle in AWS IAM?",
+    "answer": "The least privilege principle in AWS IAM means that you should not give more permissions than a user needs to perform their tasks. Permissions should be limited to the minimum required for the user’s role."
+  },
+  {
+    "question": "4. What is the purpose of an IAM role for services?",
+    "answer": "IAM roles for services are used to assign permissions to AWS services so they can perform actions on your behalf, such as EC2 Instance Roles, Lambda Function Roles, and Roles for CloudFormation."
+  },
+  {
+    "question": "5. What is the benefit of Multi-Factor Authentication (MFA) in IAM?",
+    "answer": "The main benefit of MFA in IAM is that it adds an extra layer of security. If a password is stolen or hacked, MFA ensures the account is not compromised, as it requires both something you know (password) and something you own (security device)."
+  },
+  {
+    "question": "6. What tools can be used to audit IAM credentials and permissions?",
+    "answer": "The two tools that can be used to audit IAM credentials and permissions are: IAM Credentials Report: Lists all users in the account and the status of their credentials. IAM Access Advisor: Shows the service permissions granted to a user and the last time those services were accessed."
+  },
+  {
+    "question": "7. What is the purpose of the AWS CLI and how does it differ from the AWS SDK?",
+    "answer": "The AWS CLI is a tool that enables users to interact with AWS services using commands in a command-line shell, providing direct access to public APIs of AWS services. The AWS SDK, on the other hand, is a set of language-specific APIs that allow developers to access and manage AWS services programmatically within their applications."
+  },
+  {
+    "question": "8. What are the key IAM best practices?",
+    "answer": "Key IAM best practices include: Do not use the root account except for setting up the AWS account. Use one AWS user per physical user. Assign users to groups and manage permissions through groups. Create a strong password policy. Use Multi-Factor Authentication (MFA). Use roles for AWS services to manage permissions. Regularly audit permissions using IAM Credentials Report and Access Advisor."
+  },
+  {
+    "question": "9. How do IAM users access AWS services?",
+    "answer": "IAM users can access AWS services in three ways: AWS Management Console: Protected by a password and optionally by MFA. AWS Command Line Interface (CLI): Protected by access keys. AWS Software Development Kit (SDK): Used in code and also protected by access keys."
+  },
+  {
+    "question": "10. What are Access Keys in AWS IAM, and how are they used?",
+    "answer": "Access Keys in AWS IAM consist of two parts: an Access Key ID (similar to a username) and a Secret Access Key (similar to a password). They are used for programmatic access to AWS services via the AWS CLI or SDK and should be kept secret like passwords."
+  },
+  {
+    "question": "11. What is Amazon EC2?",
+    "answer": "Amazon Elastic Compute Cloud (Amazon EC2) provides scalable computing capacity in the AWS Cloud. It allows users to rent virtual machines, store data on virtual drives, distribute load across machines, and scale services using auto-scaling groups."
+  },
+  {
+    "question": "12. What are the main capabilities of EC2?",
+    "answer": "Renting virtual machines, Storing data on virtual drives, Distributing load across machines, Scaling services using auto-scaling groups."
+  },
+  {
+    "question": "13. What types of Operating Systems can you run on EC2?",
+    "answer": "Linux, Windows, and Mac OS."
+  },
+  {
+    "question": "14. What are the EC2 instance configuration options?",
+    "answer": "Operating system (OS), Compute power and cores (CPU), Random Access Memory (RAM), Storage (network-attached or hardware), Network card speed and public IP address, Firewall rules (security groups), Bootstrap script (EC2 User Data)."
+  },
+  {
+    "question": "15. What is EC2 User Data?",
+    "answer": "EC2 User Data is a script that runs when the instance is first launched, used to automate tasks such as installing updates, software, or downloading files from the internet. It only runs once on the first boot."
+  },
+  {
+    "question": "16. What are some common tasks automated using EC2 User Data?",
+    "answer": "Installing updates, Installing software, Downloading files, Running custom commands."
+  },
+  {
+    "question": "17. What are the main EC2 instance types?",
+    "answer": "General Purpose, Compute Optimized, Memory Optimized, Storage Optimized, Accelerated Computing."
+  },
+  {
+    "question": "18. What is the naming convention for EC2 instance types?",
+    "answer": "The naming convention includes instance class, generation, and size (e.g., m5.2xlarge, where 'm' is the class, '5' is the generation, and '2xlarge' is the size)."
+  },
+  {
+    "question": "19. What are General Purpose instances used for?",
+    "answer": "General Purpose instances are suitable for diverse workloads like web servers, code repositories, with a balance between compute, memory, and networking."
+  },
+  {
+    "question": "20. What are Compute Optimized instances best for?",
+    "answer": "Compute-intensive tasks such as batch processing, media transcoding, high-performance web servers, gaming servers, and scientific modeling."
+  },
+  {
+    "question": "21. What are Memory Optimized instances best for?",
+    "answer": "Workloads that process large datasets in memory, such as high-performance databases, web-scale caches, in-memory BI databases, and real-time big data processing."
+  },
+  {
+    "question": "22. What are Storage Optimized instances best for?",
+    "answer": "Storage-intensive workloads like high-frequency online transaction processing (OLTP) systems, relational and NoSQL databases, data warehousing, and distributed file systems."
+  },
+  {
+    "question": "23. What are Security Groups in EC2?",
+    "answer": "Security Groups are virtual firewalls that control inbound and outbound traffic to and from EC2 instances. They regulate access to ports and IP ranges and can reference other security groups."
+  },
+  {
+    "question": "24. What are key characteristics of Security Groups?",
+    "answer": "They contain only allow rules, Can reference by IP or another security group, Can be attached to multiple instances, Locked down to a region or VPC, They block all inbound traffic by default, They allow all outbound traffic by default."
+  },
+  {
+    "question": "25. What are common ports to know for Security Groups?",
+    "answer": "22 = SSH, 21 = FTP, 80 = HTTP, 443 = HTTPS, 3389 = RDP."
+  },
+  {
+    "question": "26. What are the main EC2 instance launch types?",
+    "answer": "On Demand Instances, Reserved Instances, Spot Instances, Dedicated Instances, Dedicated Hosts, Capacity Reservations."
+  },
+  {
+    "question": "27. What are On Demand Instances?",
+    "answer": "Instances you pay for based on usage, recommended for short-term, uninterruptible workloads. Linux and Windows are billed per second, while other OSes are billed per hour."
+  },
+  {
+    "question": "28. What are Reserved Instances?",
+    "answer": "Reserved Instances provide up to 72% savings compared to On Demand instances, with long-term commitments (1 or 3 years). They are ideal for steady-state workloads."
+  },
+  {
+    "question": "29. What are Convertible Reserved Instances?",
+    "answer": "Convertible Reserved Instances offer up to 66% discount and allow you to change instance types, families, OS, scope, and tenancy during the reservation period."
+  },
+  {
+    "question": "30. What are Spot Instances?",
+    "answer": "Spot Instances offer up to 90% savings compared to On Demand instances but can be interrupted at any time if the spot price exceeds your bid. They are ideal for batch jobs, data analysis, and flexible workloads."
+  },
+  {
+    "question": "31. What are Dedicated Hosts?",
+    "answer": "Dedicated Hosts provide a physical server fully dedicated to your use, allowing compliance with server-bound software licenses and providing control over instance placement."
+  },
+  {
+    "question": "32. What are Capacity Reservations?",
+    "answer": "Capacity Reservations allow you to reserve On-Demand instance capacity in a specific Availability Zone, ensuring you have access to instances when needed. There is no billing discount."
+  },
+  {
+    "question": "33. What are the main payment options for Reserved Instances?",
+    "answer": "No Upfront, Partial Upfront, All Upfront."
+  },
+  {
+    "question": "34. What are the main purchasing options for Dedicated Hosts?",
+    "answer": "On-Demand (per second pricing), Reserved (1 or 3-year terms, with No Upfront, Partial Upfront, or All Upfront options)."
+  },
+  {
+    "question": "35. What is the Shared Responsibility Model for EC2?",
+    "answer": "AWS: Responsible for the infrastructure, global network security, physical host isolation, and replacing faulty hardware. User: Responsible for configuring security groups, managing software updates and patches, IAM roles, and data security on instances."
+  },
+  {
+    "question": "36. What are the main elements of an EC2 instance?",
+    "answer": "AMI (Operating System), Instance Size (CPU and RAM), Storage, Security Groups, EC2 User Data."
+  },
+  {
+    "question": "37. What is the role of SSH in EC2?",
+    "answer": "SSH allows users to start a terminal session into EC2 instances over port 22."
+  },
+  {
+    "question": "38. How can IAM Roles be used with EC2?",
+    "answer": "IAM Roles can be assigned to EC2 instances to grant them permissions to perform actions on AWS services."
+  },
+  {
+    "question": "39. What is Amazon EC2, and why is it fundamental to understanding cloud computing?",
+    "answer": "Amazon EC2 (Elastic Compute Cloud) provides scalable computing capacity in the AWS Cloud. It allows users to rent virtual machines and is essential for understanding how cloud computing works due to its core role in providing compute resources."
+  },
+  {
+    "question": "40. What are the EC2 instance sizing and configuration options available?",
+    "answer": "EC2 instance sizing includes options for operating system (Linux, Windows, or Mac OS), compute power and cores (CPU), memory (RAM), storage space (network-attached or hardware), network card speed, and firewall rules (security groups). You can also use EC2 User Data scripts for initial configuration."
+  },
+  {
+    "question": "41. What is an EC2 User Data script, and when is it executed?",
+    "answer": "An EC2 User Data script is used to automate boot tasks such as installing updates or software. It is executed only once, when the instance is launched for the first time."
+  },
+  {
+    "question": "42. List the different EC2 instance types and their use cases.",
+    "answer": "General Purpose: Balanced compute, memory, and networking. Used for web servers, code repositories. Compute Optimized: High-performance processors for batch processing, media transcoding, HPC, and gaming servers. Memory Optimized: For applications requiring large data sets in memory, like databases and in-memory caches. Storage Optimized: For high, sequential read/write access to large data sets, useful for OLTP systems and data warehousing. Accelerated Computing: For GPU or FPGA acceleration, used in machine learning and high-performance computing."
+  },
+  {
+    "question": "43. What are General Purpose EC2 instances used for?",
+    "answer": "They are used for a variety of workloads including web servers, code repositories, and development environments, providing a balance between compute, memory, and networking resources."
+  },
+  {
+    "question": "44. What are Compute Optimized EC2 instances best suited for?",
+    "answer": "They are best suited for compute-intensive tasks such as batch processing, media transcoding, high-performance web servers, HPC, scientific modeling, and gaming servers."
+  },
+  {
+    "question": "45. What workloads benefit from Memory Optimized EC2 instances?",
+    "answer": "Workloads that process large data sets in memory, such as high-performance databases, distributed caches, and applications performing real-time processing of big data."
+  },
+  {
+    "question": "46. Which EC2 instance types are optimized for storage-intensive tasks?",
+    "answer": "Storage Optimized instances like st1 and sc1 are designed for high, sequential read and write access to large data sets."
+  },
+  {
+    "question": "47. What is the naming convention for EC2 instance types, and what do the components (e.g., m5.2xlarge) mean?",
+    "answer": "The naming convention includes: m: Instance class, 5: Generation (improved over time), 2xlarge: Size within the instance class."
+  },
+  {
+    "question": "48. What are security groups in EC2, and how do they act as a firewall?",
+    "answer": "Security groups are virtual firewalls that control traffic allowed into and out of EC2 instances. They contain only allow rules and control access to ports, IP ranges, and both inbound and outbound network traffic."
+  },
+  {
+    "question": "49. What kind of rules can be applied in security groups?",
+    "answer": "Rules can specify allowed IP addresses, ports, and security groups. All inbound traffic is blocked by default, and all outbound traffic is allowed by default."
+  },
+  {
+    "question": "50. What is the default behavior of inbound and outbound traffic for EC2 security groups?",
+    "answer": "All inbound traffic is blocked by default, and all outbound traffic is allowed by default."
+  },
+  {
+    "question": "51. What is an EBS Volume, and how does it function?",
+    "answer": "An EBS (Elastic Block Store) Volume is a network drive that can be attached to EC2 instances. It persists data beyond instance termination, is locked to an Availability Zone, and can be quickly detached and reattached to other instances."
+  },
+  {
+    "question": "52. What does the 'Delete on Termination' attribute do for EBS volumes?",
+    "answer": "By default, the root EBS volume is deleted when an EC2 instance is terminated, while other attached EBS volumes are not. This behavior can be controlled via the AWS console or CLI."
+  },
+  {
+    "question": "53. What are EBS Snapshots, and what features do they offer?",
+    "answer": "EBS Snapshots are backups of EBS volumes taken at a specific point in time. They can be copied across AZs or regions, archived at a lower cost, and retained in a recycle bin for accidental deletions."
+  },
+  {
+    "question": "54. What are the different types of EBS Volumes and their use cases?",
+    "answer": "gp2/gp3 (SSD): General-purpose, cost-effective storage with balanced performance. io1/io2 (SSD): High-performance for mission-critical applications. st1 (HDD): Low cost for frequently accessed, throughput-intensive workloads. sc1 (HDD): Lowest cost for less frequently accessed data."
+  },
+  {
+    "question": "55. What are the key characteristics of EBS volumes?",
+    "answer": "Size, throughput, and IOPS (I/O operations per second)."
+  },
+  {
+    "question": "56. What is EBS Multi-Attach, and when is it used?",
+    "answer": "EBS Multi-Attach allows a single EBS volume to be attached to multiple EC2 instances within the same AZ, used for higher availability in clustered applications."
+  },
+  {
+    "question": "57. What is Amazon EFS, and what are its use cases?",
+    "answer": "Amazon EFS (Elastic File System) is a managed NFS file system that can be mounted on multiple EC2 instances across AZs. It is used for applications like content management, web serving, and data sharing."
+  },
+  {
+    "question": "58. What are the performance and storage classes of EFS?",
+    "answer": "Performance Modes: General Purpose (low latency) and Max I/O (high throughput). Throughput Modes: Bursting and Provisioned. Storage Classes: Standard and Infrequent Access (IA), with IA offering lower costs for files not accessed frequently."
+  },
+  {
+    "question": "59. How does EFS compare to EBS in terms of features and use cases?",
+    "answer": "EFS can be mounted on multiple instances across AZs, supports high availability, and is used for shared file systems. EBS is a single-instance network drive and is typically used for instance storage."
+  },
+  {
+    "question": "60. What is Amazon FSx, and what file systems does it support?",
+    "answer": "Amazon FSx is a fully managed service for launching third-party high-performance file systems on AWS, including FSx for Lustre, Windows File Server, and NetApp ONTAP."
+  },
+  {
+    "question": "61. What are the features of Amazon FSx for Windows File Server?",
+    "answer": "It provides a fully managed, scalable Windows native shared file system with support for SMB protocol, Windows NTFS, and integration with Microsoft Active Directory."
+  },
+  {
+    "question": "62. What is Amazon FSx for Lustre, and what are its use cases?",
+    "answer": "Amazon FSx for Lustre is a high-performance file storage system for HPC applications, machine learning, analytics, and video processing, offering sub-millisecond latencies and high throughput."
+  },
+  {
+    "question": "63. What is EC2 Instance Store, and how does it differ from EBS?",
+    "answer": "EC2 Instance Store provides high-performance storage directly attached to the instance, but it is ephemeral and data is lost if the instance stops. It is suitable for temporary data, cache, and buffers."
+  },
+  {
+    "question": "64. What is the Shared Responsibility Model for EC2 storage, and what are the user responsibilities?",
+    "answer": "AWS handles the infrastructure and hardware, while users are responsible for setting up backup and snapshot procedures, data encryption, and ensuring data security and replication."
+  },
+  {
+    "question": "65. What is an AMI, and how is it used with EC2 instances?",
+    "answer": "An AMI (Amazon Machine Image) is a pre-configured template for launching EC2 instances. It includes the operating system, software, and configurations. AMIs can be public, custom, or available through AWS Marketplace."
+  },
+  {
+    "question": "66. How do you create an AMI from an EC2 instance?",
+    "answer": "Start and customize an EC2 instance, stop it, then create an AMI which also generates EBS snapshots. The AMI can then be used to launch new instances."
+  },
+  {
+    "question": "67. What is EC2 Image Builder, and what does it do?",
+    "answer": "EC2 Image Builder automates the creation, maintenance, validation, and testing of EC2 AMIs and container images. It can be scheduled to run automatically and is a free service (costs for underlying resources apply)."
+  },
+  {
+    "question": "68. What is vertical scalability?",
+    "answer": "Vertical scalability involves increasing the size or power of a single instance, such as upgrading from a t2.micro to a t2.large instance. This is commonly used for non-distributed systems like databases."
+  },
+  {
+    "question": "69. What is horizontal scalability?",
+    "answer": "Horizontal scalability means increasing the number of instances or systems for an application, which allows for distributed systems. It is commonly used for web applications and modern applications, and is easily achieved with cloud offerings like Amazon EC2."
+  },
+  {
+    "question": "70. How does high availability relate to scalability?",
+    "answer": "High availability usually accompanies horizontal scaling. It involves running applications across multiple Availability Zones (AZs) to ensure that the application can survive data center failures and remain operational."
+  },
+  {
+    "question": "71. What are some methods to achieve high availability for EC2 instances?",
+    "answer": "Methods include running instances across multiple AZs, using Auto Scaling Groups, and implementing Load Balancers that distribute traffic across instances in different AZs."
+  },
+  {
+    "question": "72. What is the purpose of a load balancer?",
+    "answer": "A load balancer distributes internet traffic across multiple servers (EC2 Instances) to ensure even load distribution, provide a single point of access, handle failures, perform health checks, and manage SSL termination."
+  },
+  {
+    "question": "73. What is an Elastic Load Balancer (ELB)?",
+    "answer": "An ELB is a managed load balancer provided by AWS that handles upgrades, maintenance, and high availability. It integrates with many AWS services and is cost-effective compared to setting up your own load balancer."
+  },
+  {
+    "question": "74. What are the types of load balancers offered by AWS?",
+    "answer": "AWS offers four types of load balancers: Classic Load Balancer (CLB), Application Load Balancer (ALB), Network Load Balancer (NLB), and Gateway Load Balancer (GWLB)."
+  },
+  {
+    "question": "75. What is the difference between the Classic Load Balancer (CLB) and the Application Load Balancer (ALB)?",
+    "answer": "CLB operates at Layer 4 and Layer 7, supporting TCP and HTTP/HTTPS traffic. ALB operates at Layer 7, supporting advanced routing features like path-based and host-based routing, HTTP/2, and WebSocket."
+  },
+  {
+    "question": "76. What is Server Name Indication (SNI)?",
+    "answer": "SNI allows multiple SSL certificates to be served from a single server by having the client specify the hostname during the SSL handshake. This is supported by ALB and NLB but not by CLB."
+  },
+  {
+    "question": "77. What is connection draining (or de-registration delay)?",
+    "answer": "Connection draining allows existing requests to complete before an instance is de-registered or marked as unhealthy, ensuring a smooth transition without dropping requests. It can be configured from 1 to 3600 seconds."
+  },
+  {
+    "question": "78. What is an Auto Scaling Group (ASG)?",
+    "answer": "An ASG automatically adjusts the number of EC2 instances in response to changes in load, ensuring that a minimum and maximum number of instances are maintained, and integrates with load balancers."
+  },
+  {
+    "question": "79. What types of scaling policies can you use with an Auto Scaling Group?",
+    "answer": "Scaling policies include dynamic scaling (responds to changing demand), target tracking scaling (maintains metrics like average CPU utilization), scheduled scaling (anticipates load based on known patterns), and predictive scaling (uses machine learning to forecast future traffic)."
+  },
+  {
+    "question": "80. What is a scaling cooldown period?",
+    "answer": "The cooldown period is a set time after a scaling activity during which no additional scaling actions are taken. This allows metrics to stabilize before further scaling decisions are made."
+  },
+  {
+    "question": "81. What is the purpose of an Instance Refresh in Auto Scaling?",
+    "answer": "Instance Refresh updates the launch template and replaces EC2 instances with new ones to apply updates. It ensures that instances meet the new configuration and maintains application availability during the refresh process."
+  },
+  {
+    "question": "82. What is Amazon RDS?",
+    "answer": "Amazon RDS (Relational Database Service) is a managed database service that provides a scalable and reliable relational database in the cloud, supporting various database engines like PostgreSQL, MySQL, MariaDB, Oracle, Microsoft SQL Server, and Amazon Aurora."
+  },
+  {
+    "question": "83. What are the benefits of using Amazon RDS over deploying a database on EC2?",
+    "answer": "RDS provides automated provisioning, OS patching, continuous backups with Point-in-Time Restore, monitoring dashboards, read replicas, Multi-AZ setup for disaster recovery, maintenance windows for upgrades, and vertical/horizontal scaling capabilities. However, SSH access to instances is not available."
+  },
+  {
+    "question": "84. What is Storage Auto Scaling in RDS?",
+    "answer": "Storage Auto Scaling automatically increases the storage of an RDS DB instance when it detects that free storage is running low. It scales dynamically based on thresholds you set, avoiding manual storage adjustments."
+  },
+  {
+    "question": "85. What are RDS Read Replicas and their use cases?",
+    "answer": "RDS Read Replicas are used to scale read operations by creating copies of the primary database. They support up to 5 replicas and can be within the same AZ, across AZs, or across regions. They are eventually consistent and are used for read-intensive workloads like reporting applications."
+  },
+  {
+    "question": "86. How does Multi-AZ setup in RDS enhance availability?",
+    "answer": "Multi-AZ deployments provide synchronous replication to a standby instance in a different AZ. It increases availability and provides automatic failover in case of an AZ outage, network issues, or instance failure, with no manual intervention required."
+  },
+  {
+    "question": "87. How can you migrate from a Single-AZ to a Multi-AZ RDS deployment?",
+    "answer": "Migration from Single-AZ to Multi-AZ involves modifying the database instance. Internally, a snapshot is taken, a new DB is restored in a different AZ, and synchronization occurs between the databases, all without downtime."
+  },
+  {
+    "question": "88. What is Amazon Aurora and how does it differ from other RDS engines?",
+    "answer": "Amazon Aurora is a proprietary AWS database optimized for the cloud, claiming up to 5x performance improvement over MySQL and 3x over PostgreSQL. It supports up to 15 replicas, has faster replication, and provides instantaneous failover. Aurora’s storage scales automatically and is more efficient but costs more than standard RDS engines."
+  },
+  {
+    "question": "89. What is an Aurora DB Cluster?",
+    "answer": "An Aurora DB Cluster is a group of one or more Aurora instances functioning as a single, highly-available database. Aurora manages tasks such as replication, backups, and failure detection, and includes features like Aurora Global Database for cross-region replication."
+  },
+  {
+    "question": "90. What is Amazon ElastiCache?",
+    "answer": "Amazon ElastiCache is a managed caching service that supports Redis and Memcached. It provides in-memory data storage with high performance and low latency, reducing database load and making applications more stateless."
+  },
+  {
+    "question": "91. What are the primary differences between Redis and Memcached in ElastiCache?",
+    "answer": "Redis supports multi-AZ with auto-failover, data persistence, backups, and read replicas, while Memcached does not support high availability, persistence, or backup features. Redis uses multi-threaded architecture, while Memcached uses single-threaded architecture."
+  },
+  {
+    "question": "92. What are the security features of ElastiCache?",
+    "answer": "ElastiCache supports network security through security groups, but does not support IAM authentication. Redis supports AUTH for password protection and SSL encryption, while Memcached supports SASL-based authentication and SSL encryption."
+  },
+  {
+    "question": "93. How does ElastiCache replication work?",
+    "answer": "In Redis, replication can be set up with multi-AZ and auto-failover, using primary and replica nodes. In Memcached, replication is not available; however, clustering with shards can help partition data and scale writes."
+  },
+  {
+    "question": "94. What are the caching design patterns and their pros and cons?",
+    "answer": "Common caching patterns include: Lazy Loading/Cache-Aside: Caches only requested data; mitigates node failures but can cause stale data. Write-Through: Updates the cache when the database updates; ensures data consistency but can introduce write penalties. TTL (Time-to-Live): Automatically expires cache entries; useful for data like leaderboards and comments, but frequent evictions may indicate a need to scale."
+  },
+  {
+    "question": "95. What is Amazon MemoryDB for Redis?",
+    "answer": "Amazon MemoryDB for Redis is a Redis-compatible, durable, in-memory database service that offers ultra-fast performance, high durability with multi-AZ transactional logs, and scales from tens of GBs to hundreds of TBs. It’s used for applications requiring high-speed data access, like web and mobile apps, online gaming, and media streaming."
+  },
+  {
+    "question": "96. What is the purpose of a DNS zone file?",
+    "answer": "A DNS zone file contains DNS records for a domain or subdomain. It specifies how DNS queries for that domain should be resolved, including mappings of domain names to IP addresses and other related information."
+  },
+  {
+    "question": "97. How do the roles of a Root DNS Server, TLD DNS Server, and SLD DNS Server differ in the DNS resolution process?",
+    "answer": "Root DNS Server: The top-level server that contains information about TLD servers. It responds with the IP address of the appropriate TLD server. TLD DNS Server: Manages information for specific top-level domains (e.g., .com, .org). It directs the query to the relevant SLD server. SLD DNS Server: Contains information about specific domain names and their IP addresses. It provides the final IP address associated with the queried domain."
+  },
+  {
+    "question": "98. What is the significance of TTL (Time to Live) in DNS records?",
+    "answer": "TTL specifies the amount of time that a DNS record is cached by DNS resolvers before they must query the authoritative DNS server again. A high TTL reduces traffic on DNS servers but may cause outdated records to be used, while a low TTL ensures records are updated more frequently but increases DNS query traffic."
+  },
+  {
+    "question": "99. What is the difference between CNAME and Alias records in Route 53?",
+    "answer": "CNAME Record: Maps a hostname to another hostname. It cannot be used for the root domain (Zone Apex) and must point to a domain name with an A or AAAA record. Alias Record: Maps a hostname to an AWS resource (e.g., ELB, CloudFront) and can be used for both root and non-root domains. It’s free of charge and supports AWS resource health checks."
+  },
+  {
+    "question": "100. Describe the use case for Route 53’s Weighted Routing Policy.",
+    "answer": "The Weighted Routing Policy allows you to control the percentage of traffic directed to different resources based on assigned weights. It is useful for load balancing between regions, testing new application versions, or distributing traffic among multiple resources."
+  },
+  {
+    "question": "101. How does the Failover Routing Policy work in Route 53?",
+    "answer": "The Failover Routing Policy routes traffic to a primary resource under normal conditions and automatically switches to a secondary resource if the primary resource becomes unhealthy. This ensures high availability by minimizing the impact of resource failures."
+  },
+  {
+    "question": "102. What is the difference between Geolocation and Geoproximity Routing Policies in Route 53?",
+    "answer": "Geolocation Routing: Routes traffic based on the geographic location of the user, such as continent, country, or state. Useful for content localization. Geoproximity Routing: Routes traffic based on the geographic location of both users and resources, allowing traffic shifting based on defined bias towards certain resources."
+  },
+  {
+    "question": "103. What is a Hosted Zone in Route 53, and what are the differences between Public and Private Hosted Zones?",
+    "answer": "A Hosted Zone is a container for DNS records that define how traffic is routed to a domain and its subdomains. Public Hosted Zones route traffic over the Internet and are accessible by anyone. Private Hosted Zones route traffic within specified VPCs and are only accessible to resources within those VPCs."
+  },
+  {
+    "question": "104. Explain the concept of a Domain Registrar and how it differs from a DNS Service.",
+    "answer": "A Domain Registrar is a service that allows you to register and manage domain names (e.g., GoDaddy). A DNS Service, such as Route 53, manages the DNS records and routing for those domain names. You can use a separate DNS service to manage DNS records even if you purchase the domain from a different registrar."
+  },
+  {
+    "question": "105. What are the potential advantages of using Route 53’s Traffic Flow feature?",
+    "answer": "Route 53’s Traffic Flow feature simplifies the management of complex DNS configurations by providing a visual editor for creating routing decision trees. It supports versioning, saving configurations as policies, and applying them to different hosted zones, making it easier to manage and scale DNS routing."
+  },
+  {
+    "question": "106. What is the primary purpose of a VPC (Virtual Private Cloud) in AWS?",
+    "answer": "A VPC (Virtual Private Cloud) is a private network in AWS that allows you to deploy and manage your resources in a logically isolated section of the AWS cloud. It enables you to define your own network configuration, including IP address ranges, subnets, and route tables, providing control over network access and security."
+  },
+  {
+    "question": "107. What is the difference between a public subnet and a private subnet in AWS?",
+    "answer": "Public Subnet: A subnet that is accessible from the internet. It typically contains resources like load balancers, static websites, and public authentication layers. It has a route to the internet gateway. Private Subnet: A subnet that is not accessible from the internet. It typically contains resources like web application servers and databases. It uses NAT gateways or NAT instances for internet access while remaining private."
+  },
+  {
+    "question": "108. How do Internet Gateways and NAT Gateways differ in AWS?",
+    "answer": "Internet Gateway: A VPC component that allows instances in public subnets to connect to the internet. NAT Gateway (or NAT Instance): Allows instances in private subnets to access the internet while keeping them private. NAT Gateways are managed by AWS, while NAT Instances are self-managed."
+  },
+  {
+    "question": "109. What are Network ACLs (NACLs), and how do they differ from Security Groups?",
+    "answer": "Network ACLs (NACLs): Operate at the subnet level and control traffic to and from a subnet. They support both allow and deny rules and are stateless (return traffic must be explicitly allowed). Security Groups: Operate at the instance level and control traffic to and from an EC2 instance or ENI. They support only allow rules and are stateful (return traffic is automatically allowed if the inbound traffic is allowed)."
+  },
+  {
+    "question": "110. What is the purpose of VPC Flow Logs, and where can the data be sent?",
+    "answer": "VPC Flow Logs capture information about IP traffic going into and out of network interfaces within a VPC. They help in monitoring and troubleshooting connectivity issues and can capture data for interfaces like Elastic Load Balancers and RDS. The log data can be sent to Amazon S3 or CloudWatch Logs."
+  },
+  {
+    "question": "111. What is VPC Peering, and what are its limitations?",
+    "answer": "VPC Peering is a connection between two VPCs that allows them to communicate privately as if they were on the same network. It requires non-overlapping CIDR blocks and must be established individually between each pair of VPCs that need to communicate (it is not transitive)."
+  },
+  {
+    "question": "112. Describe the difference between VPC Endpoint Gateway and VPC Endpoint Interface.",
+    "answer": "VPC Endpoint Gateway: Used for connecting to AWS services like S3 and DynamoDB over a private network within your VPC. VPC Endpoint Interface: Used for connecting to other AWS services through a private network within your VPC (e.g., AWS PrivateLink)."
+  },
+  {
+    "question": "113. What are the key differences between Site-to-Site VPN and Direct Connect?",
+    "answer": "Site-to-Site VPN: Connects on-premises networks to AWS over the public internet with automatic encryption. It is easier to set up but may have higher latency. Direct Connect (DX): Establishes a private, dedicated connection between on-premises and AWS, providing higher security and potentially lower latency. It requires a longer setup time and does not access VPC endpoints."
+  },
+  {
+    "question": "114. How are VPC Peering and VPC Endpoints used in AWS, and what are their key features?",
+    "answer": "VPC Peering: Connects two VPCs privately, allowing resources in different VPCs to communicate as if they were within the same network. It is non-transitive and requires non-overlapping IP ranges. VPC Endpoints: Provide private access to AWS services from within your VPC, avoiding exposure to the public internet. They come in two types: Gateway (for services like S3 and DynamoDB) and Interface (for other services)."
+  },
+  {
+    "question": "115. What is the purpose of NAT Gateways, and why might they be used in a private subnet?",
+    "answer": "NAT Gateways allow instances in private subnets to access the internet for updates and other outbound communications while keeping their private IP addresses hidden from the public internet. This maintains the security of the instances while enabling necessary outbound traffic."
+  },
+  {
+    "question": "116. What are some common use cases for Amazon S3?",
+    "answer": "Backup and Storage: Reliable and scalable storage for backups. Disaster Recovery: Storing backups to facilitate recovery after a disaster. Archive: Long-term storage for infrequently accessed data. Hybrid Cloud Storage: Integrating with on-premises storage solutions. Application Hosting: Hosting application data and files. Media Hosting: Storing and serving media files like images and videos. Data Lakes & Big Data Analytics: Centralizing data for analysis and processing. Software Delivery: Distributing software and updates. Static Website Hosting: Hosting static websites directly from S3."
+  },
+  {
+    "question": "117. What are the rules for naming S3 buckets?",
+    "answer": "Buckets must have a globally unique name across all regions and accounts. Names must be between 3 and 63 characters long. Names must start with a lowercase letter or number. No uppercase letters or underscores are allowed. Names cannot be an IP address format."
+  },
+  {
+    "question": "118. How does object key naming work in S3?",
+    "answer": "Objects in S3 are identified by a unique key which represents the full path within the bucket. Example keys: s3://my-bucket/my_file.txt s3://my-bucket/my_folder1/another_folder/my_file.txt There are no true directories; keys with slashes (/) are used to simulate a hierarchical structure."
+  },
+  {
+    "question": "119. What are the differences between S3 Standard and S3 Standard-IA storage classes?",
+    "answer": "S3 Standard: Designed for frequently accessed data. 99.99% availability. Low latency and high throughput. S3 Standard-IA (Infrequent Access): Designed for data that is less frequently accessed but requires rapid access when needed. 99.9% availability. Lower cost compared to S3 Standard."
+  },
+  {
+    "question": "120. What are the benefits and limitations of S3 Glacier storage classes?",
+    "answer": "Amazon S3 Glacier: Low-cost storage for long-term archival. Retrieval times vary from minutes to hours. Minimum storage duration of 90 days. Amazon S3 Glacier Deep Archive: Designed for long-term archival with lower costs. Retrieval times from 12 to 48 hours. Minimum storage duration of 180 days."
+  },
+  {
+    "question": "121. How do S3 Bucket Policies and IAM Policies differ in controlling access to S3 resources?",
+    "answer": "Bucket Policies: Applied at the bucket level. JSON-based policies allowing for fine-grained access control. Can be used to grant public access or cross-account access. IAM Policies: Applied at the user or group level. Control API calls that users or roles can make. Do not directly control access to individual objects but affect overall access permissions."
+  },
+  {
+    "question": "122. What is the purpose of S3 Versioning, and how does it work?",
+    "answer": "S3 Versioning: Enables you to keep multiple versions of an object within a bucket. Protects against accidental deletions and allows rollback to previous versions. Versioning must be enabled at the bucket level. Objects are assigned a version ID, and older versions are retained even if new versions are uploaded."
+  },
+  {
+    "question": "123. What is the function of S3 Replication, and what types are available?",
+    "answer": "S3 Replication: Copies objects from one bucket to another. Cross-Region Replication (CRR): Replicates objects to buckets in different AWS regions, useful for compliance and lower latency access. Same-Region Replication (SRR): Replicates objects within the same region, useful for backup and aggregation. Must enable versioning on source and destination buckets."
+  },
+  {
+    "question": "124. How can S3 Access Logs be used, and what information do they provide?",
+    "answer": "S3 Access Logs: Log all requests made to S3 buckets, including authorized and denied requests. Useful for auditing and troubleshooting, identifying access patterns, and investigating issues. Logs are stored in a separate S3 bucket and can be analyzed using various tools."
+  },
+  {
+    "question": "125. What is the Shared Responsibility Model for Amazon S3?",
+    "answer": "AWS Responsibilities: Infrastructure security (global security, durability, availability). S3 features such as versioning, replication setup, and storage classes. Customer Responsibilities: Configuration and management of access controls (IAM policies, bucket policies). Data encryption at rest and in transit. Monitoring and compliance validation."
+  },
+  {
+    "question": "126. What is the purpose of the --dry-run option in some AWS CLI commands?",
+    "answer": "It allows you to simulate API calls to verify permissions without actually executing the command."
+  },
+  {
+    "question": "127. How can you decode a long error message from a failed AWS API call?",
+    "answer": "Use the command aws sts decode-authorization-message --encoded-message {encoded_message_code}."
+  },
+  {
+    "question": "128. What is the URL to access EC2 instance metadata?",
+    "answer": "http://169.254.169.254/latest/meta-data."
+  },
+  {
+    "question": "129. What information can you retrieve from EC2 instance metadata and what cannot you retrieve?",
+    "answer": "You can retrieve the IAM Role name but not the IAM Policy. Metadata provides information about the EC2 instance, while userdata contains the launch script."
+  },
+  {
+    "question": "130. How do you obtain temporary credentials for MFA using the AWS CLI?",
+    "answer": "Run the command:\naws sts get-session-token --serial-number arn-of-the-mfa-device --token-code code-from-token --duration-seconds 3600"
+  },
+  {
+    "question": "131. How do you set up and use custom profiles with the AWS CLI?",
+    "answer": "Use aws configure --profile {my-other-aws-account} to set up a profile and execute commands with --profile {my-other-aws-account} to use that profile."
+  },
+  {
+    "question": "132. How can EC2 instances use IAM roles automatically?",
+    "answer": "IAM roles can be attached to EC2 instances, allowing the instances to use these roles without additional configuration."
+  },
+  {
+    "question": "133. Which programming languages have official AWS SDKs available?",
+    "answer": "Java, .NET, Node.js, PHP, Python (boto3), Go, Ruby, C++."
+  },
+  {
+    "question": "134. What SDK does the AWS CLI use?",
+    "answer": "The AWS CLI uses the Python SDK (boto3)."
+  },
+  {
+    "question": "135. What is the API rate limit for the DescribeInstances API for EC2?",
+    "answer": "The limit is 100 calls per second."
+  },
+  {
+    "question": "136. What is the maximum number of vCPUs allowed for running On-Demand Standard Instances in AWS?",
+    "answer": "1152 vCPUs."
+  },
+  {
+    "question": "137. When should you implement exponential backoff in AWS?",
+    "answer": "Implement exponential backoff for ThrottlingException and other 5xx server errors, but not for 4xx client errors."
+  },
+  {
+    "question": "138. In what order does the AWS CLI look for credentials?",
+    "answer": "Command line options\nEnvironment variables\nCLI credentials file\nCLI configuration file\nContainer credentials\nInstance profile credentials"
+  },
+  {
+    "question": "139. What is the best practice for managing AWS credentials in your code?",
+    "answer": "Never store AWS credentials directly in your code. Use IAM roles for AWS resources and environment variables or named profiles for external applications."
+  },
+  {
+    "question": "140. How can you transition objects to different storage classes in Amazon S3?",
+    "answer": "You can transition objects using Lifecycle Rules. For infrequently accessed objects, move them to Standard-IA. For archive objects, move them to Glacier or Glacier Deep Archive."
+  },
+  {
+    "question": "141. What actions can be configured with Amazon S3 Lifecycle Rules?",
+    "answer": "Transition actions and expiration actions. Transition objects to a different storage class after a specified time, such as moving to Standard-IA after 60 days and to Glacier after 6 months. Expire (delete) objects after a set period, like deleting access log files after 365 days, or old versions of files, or incomplete Multi-Part uploads."
+  },
+  {
+    "question": "142. How can Lifecycle Rules be applied to specific objects?",
+    "answer": "Rules can be created for specific prefixes (e.g., s3://mybucket/mp3/*) or object tags (e.g., Department:Finance)."
+  },
+  {
+    "question": "143. How would you configure Lifecycle Rules for a scenario where image thumbnails are recreated and should be deleted after 60 days, while source images need to be retrievable for 60 days and then archived?",
+    "answer": "Store source images in Standard with a lifecycle rule to transition them to Glacier after 60 days. Store thumbnails in One-Zone IA with a lifecycle rule to expire them after 60 days."
+  },
+  {
+    "question": "144. How would you ensure that deleted S3 objects are recoverable immediately for 30 days and then within 48 hours for up to 365 days?",
+    "answer": "Enable S3 Versioning to have object versions. Transition noncurrent versions to Standard-IA and then to Glacier Deep Archive."
+  },
+  {
+    "question": "145. What is the purpose of S3 Storage Class Analysis?",
+    "answer": "It helps decide when to transition objects to the right storage class, providing recommendations for Standard and Standard-IA. It does not work for One-Zone IA or Glacier and updates daily."
+  },
+  {
+    "question": "146. What are S3 Event Notifications used for and what can you configure?",
+    "answer": "They notify you of events like object creation, removal, restore, and replication. You can filter by object name and configure multiple events."
+  },
+  {
+    "question": "147. What are the typical delivery times for S3 Event Notifications?",
+    "answer": "Typically delivered in seconds but can sometimes take a minute or longer."
+  },
+  {
+    "question": "148. What are the advantages of using Amazon EventBridge with S3 Event Notifications?",
+    "answer": "It provides advanced filtering options with JSON rules, supports multiple destinations like Step Functions and Kinesis Streams, and offers capabilities like event archiving and replay."
+  },
+  {
+    "question": "149. What is the performance baseline for Amazon S3 requests?",
+    "answer": "Amazon S3 scales to high request rates with latency of 100-200 ms. You can achieve at least 3,500 PUT/COPY/POST/DELETE or 5,500 GET/HEAD requests per second per prefix."
+  },
+  {
+    "question": "150. What methods can improve the transfer speed of large files in S3?",
+    "answer": "Use S3 Transfer Acceleration for files over 100MB, which speeds up transfers by sending files to an AWS edge location first. Multi-Part uploads and parallelizing GET requests also help."
+  },
+  {
+    "question": "151. How can S3 Select and Glacier Select be used to improve data retrieval efficiency?",
+    "answer": "They allow server-side filtering using SQL statements to retrieve less data, reducing network transfer and client-side CPU costs."
+  },
+  {
+    "question": "152. How are user-defined metadata and object tags used in S3?",
+    "answer": "Metadata are key-value pairs assigned during upload and can be retrieved with the object. Object tags are key-value pairs used for permissions and analytics but require an external database like DynamoDB for searching."
+  },
+  {
+    "question": "153. What are the four methods to encrypt objects in S3?",
+    "answer": "Server-Side Encryption with Amazon S3-Managed Keys (SSE-S3), Server-Side Encryption with AWS KMS Keys (SSE-KMS), Server-Side Encryption with Customer-Provided Keys (SSE-C), and Client-Side Encryption."
+  },
+  {
+    "question": "154. What are the characteristics of SSE-S3 encryption?",
+    "answer": "It uses keys handled and managed by AWS, encrypts objects server-side with AES-256, and is enabled by default for new buckets and objects."
+  },
+  {
+    "question": "155. What are the features of SSE-KMS encryption?",
+    "answer": "It uses AWS KMS to manage encryption keys, provides user control, and allows auditing key usage with CloudTrail. Objects are encrypted server-side."
+  },
+  {
+    "question": "156. What are some limitations of SSE-KMS?",
+    "answer": "KMS limits include quota per second for API calls. You can request a quota increase via the Service Quotas Console."
+  },
+  {
+    "question": "157. How does SSE-C encryption work?",
+    "answer": "SSE-C uses keys managed by the customer outside AWS, requires HTTPS, and the encryption key must be provided in HTTP headers for every request."
+  },
+  {
+    "question": "158. What is client-side encryption in S3?",
+    "answer": "Clients encrypt data before sending it to S3 and decrypt it after retrieving. The customer manages encryption keys and the encryption process."
+  },
+  {
+    "question": "159. What is the difference between HTTP and HTTPS endpoints for Amazon S3?",
+    "answer": "HTTP is non-encrypted, while HTTPS provides encryption in transit. HTTPS is recommended and mandatory for SSE-C."
+  },
+  {
+    "question": "160. What does CORS stand for and what is its purpose?",
+    "answer": "Cross-Origin Resource Sharing (CORS) allows requests from different origins while visiting the main origin, controlled by CORS headers like Access-Control-Allow-Origin."
+  },
+  {
+    "question": "161. How can you configure CORS for an S3 bucket?",
+    "answer": "Enable CORS headers in the bucket's configuration to allow requests from specific origins or all origins (*)."
+  },
+  {
+    "question": "162. What operations require MFA Delete on S3?",
+    "answer": "MFA Delete is required to permanently delete an object version or to suspend versioning on the bucket. It is not required to enable versioning or list deleted versions."
+  },
+  {
+    "question": "163. What is the purpose of S3 access logs and where are they stored?",
+    "answer": "Access logs record all requests made to S3 buckets. They are stored in another S3 bucket within the same AWS region."
+  },
+  {
+    "question": "164. What should you avoid when configuring S3 access logs?",
+    "answer": "Do not set the logging bucket as the monitored bucket to prevent logging loops."
+  },
+  {
+    "question": "165. What is a pre-signed URL and how is it used?",
+    "answer": "A pre-signed URL allows temporary access to S3 objects for GET or PUT operations, inheriting permissions from the user who generated it. Expiration can be set from 1 minute to 12 hours."
+  },
+  {
+    "question": "166. What are S3 Access Points and their benefits?",
+    "answer": "S3 Access Points simplify security management for buckets by providing a unique DNS name and access point policy for each access point."
+  },
+  {
+    "question": "167. How can you restrict an S3 Access Point to a VPC?",
+    "answer": "Define the access point to be accessible only from within the VPC and create a VPC Endpoint to access it. Ensure the VPC Endpoint Policy allows access."
+  },
+  {
+    "question": "168. What is S3 Object Lambda and what are some use cases?",
+    "answer": "S3 Object Lambda allows AWS Lambda functions to modify objects before they are retrieved. Use cases include redacting PII, converting data formats, and resizing images."
+  },
+  {
+    "question": "169. What is AWS Elastic Beanstalk?",
+    "answer": "Elastic Beanstalk is a managed service that simplifies the deployment and management of applications on AWS. It automatically handles infrastructure tasks like provisioning, load balancing, scaling, and monitoring. It supports multiple platforms, including Go, Java, Python, Node.js, Ruby, and Docker."
+  },
+  {
+    "question": "170. What are the three architecture models available in Elastic Beanstalk?",
+    "answer": "Single Instance Deployment: Ideal for development, providing a single EC2 instance with an Elastic IP. Load Balancer + Auto Scaling Group (ASG): Suitable for production or staging web applications, with an ASG spanning multiple availability zones. Auto Scaling Group Only: Ideal for non-web applications in production."
+  },
+  {
+    "question": "171. What are the main components of an Elastic Beanstalk application?",
+    "answer": "Application: The main unit of deployment. Application Version: Each deployment is assigned a version. Environment: Names like dev, staging, or prod, where applications are deployed."
+  },
+  {
+    "question": "172. Describe the different Elastic Beanstalk deployment modes.",
+    "answer": "All at Once: Deploys the new version to all instances simultaneously, leading to potential downtime. Rolling: Updates a few instances at a time, running both old and new versions temporarily. Rolling with Additional Batches: Adds a batch of new instances before updating old ones, with minor additional cost. Immutable: Deploys to a new ASG and terminates the old ASG if the new version is validated, ensuring zero downtime but with the highest cost."
+  },
+  {
+    "question": "173. How does Blue/Green deployment work with Elastic Beanstalk?",
+    "answer": "Blue/Green deployment is not a direct feature of Elastic Beanstalk. It involves creating a new staging environment (green), validating the new version, and then swapping URLs or using Route 53 weighted policies to redirect traffic. It provides zero downtime and rollback capabilities."
+  },
+  {
+    "question": "174. What is the purpose of the EB CLI?",
+    "answer": "The EB CLI (Elastic Beanstalk Command Line Interface) simplifies interaction with Elastic Beanstalk by providing commands to manage environments, deploy applications, check health, and view logs. Common commands include eb create, eb deploy, eb status, and eb logs."
+  },
+  {
+    "question": "175. How does Elastic Beanstalk manage application versions and what is a lifecycle policy?",
+    "answer": "Elastic Beanstalk stores up to 1000 application versions. To deploy new versions after reaching this limit, older versions must be removed. A lifecycle policy can be based on time (e.g., removing versions older than a specified period) or space (e.g., removing older versions if exceeding a limit)."
+  },
+  {
+    "question": "176. What are Elastic Beanstalk Extensions and how are they used?",
+    "answer": "Elastic Beanstalk Extensions are configuration files placed in the .ebextensions/ directory of your project. They allow you to customize settings, add resources, and configure other aspects of your Elastic Beanstalk environment using YAML or JSON format."
+  },
+  {
+    "question": "177. How does Elastic Beanstalk use CloudFormation?",
+    "answer": "Elastic Beanstalk uses CloudFormation under the hood to provision and manage AWS resources. You can take advantage of this by placing configuration files in .ebextensions to provision additional resources and customize the environment."
+  },
+  {
+    "question": "178. What is the process for cloning and migrating an Elastic Beanstalk environment?",
+    "answer": "Cloning: Creates a new environment with the same configurations as the original, useful for test deployments. Migration: Involves creating a new environment with different configurations (e.g., changing the load balancer type), deploying the application, and shifting traffic using a CNAME swap or DNS update."
+  },
+  {
+    "question": "179. How does Elastic Beanstalk handle Docker containers?",
+    "answer": "Single Container Docker: Uses a Dockerfile or Dockerrun.aws.json (v1) to specify the Docker image. Multi-Container Docker: Uses Dockerrun.aws.json (v2) to define an ECS task definition, running multiple containers per EC2 instance with an ECS cluster and a load balancer."
+  },
+  {
+    "question": "180. How does Elastic Beanstalk integrate with HTTPS?",
+    "answer": "SSL certificates can be loaded from the console or using .ebextensions/securelistener-alb.config. SSL certificates can be provisioned using ACM or the CLI. HTTP to HTTPS redirection can be configured on instances or the Application Load Balancer (ALB)."
+  },
+  {
+    "question": "181. What is Docker and how does it work?",
+    "answer": "Docker is a software development platform used to deploy applications in containers. Containers package applications with their dependencies, allowing them to run consistently across different operating systems. Docker containers operate independently and do not interact unless configured to do so. They provide isolation, ensuring that a failure in one container does not affect others."
+  },
+  {
+    "question": "182. What is the purpose of container registries in Docker?",
+    "answer": "Container registries store Docker images. Examples include Docker Hub and Amazon Elastic Container Registry (ECR). They allow developers to push and pull Docker images, making it easy to distribute and manage containerized applications."
+  },
+  {
+    "question": "183. How do containers differ from virtual machines (VMs)?",
+    "answer": "Containers share the host operating system and resources, eliminating the need for a hypervisor, which allows them to be more lightweight and efficient. VMs, on the other hand, run on a hypervisor and include a full operating system, which makes them more resource-intensive."
+  },
+  {
+    "question": "184. What is Amazon ECS and what are ECS clusters?",
+    "answer": "Amazon Elastic Container Service (ECS) is a service that manages Docker containers. ECS clusters are logical groups of EC2 instances running the ECS agent. These instances use a specialized Amazon Linux AMI designed for ECS."
+  },
+  {
+    "question": "185. What is a task definition in ECS?",
+    "answer": "A task definition is a JSON file that describes how to run a Docker container in ECS. It includes details such as the Docker image name, port bindings, memory and CPU requirements, environment variables, and networking information."
+  },
+  {
+    "question": "186. What are ECS services and how do they work?",
+    "answer": "ECS services manage the running of tasks, ensuring that the desired number of tasks are running across EC2 instances. They can be linked to a load balancer and support various deployment types, including rolling updates and Blue/Green deployment using AWS CodeDeploy."
+  },
+  {
+    "question": "187. What is dynamic port forwarding in ECS?",
+    "answer": "Dynamic port forwarding allows ECS services to use random host ports. The Application Load Balancer (ALB) routes traffic to these random ports, balancing the load across the running services. Load balancers cannot be added to existing ECS stacks; a new stack must be created for this purpose."
+  },
+  {
+    "question": "188. How are IAM roles used in ECS?",
+    "answer": "EC2 Instance Profile: Attached to EC2 instances, it allows the ECS agent to interact with the ECS service, send logs to CloudWatch, and pull images from ECR. ECS Task Role: Allows tasks to assume specific roles and permissions. Different task roles can be used for different ECS services, even on the same EC2 instance."
+  },
+  {
+    "question": "189. What are ECS task placement strategies and constraints?",
+    "answer": "Placement Strategies: Binpack: Places tasks on instances with the least available CPU or memory to minimize the number of instances in use. Random: Places tasks on random instances. Spread: Distributes tasks evenly based on conditions like availability zone. Placement Constraints: distinctInstance: Ensures each task runs on a different instance. memberOf: Places tasks on instances that meet specific criteria, defined using Cluster Query Language."
+  },
+  {
+    "question": "190. What is ECS Service Auto Scaling and how does it work?",
+    "answer": "ECS Service Auto Scaling adjusts the number of tasks based on metrics tracked in CloudWatch. It supports: Target Tracking: Scales based on a specific metric. Step Scaling: Scales based on CloudWatch alarms. Scheduled Scaling: Scales based on predictable changes, like high traffic times."
+  },
+  {
+    "question": "191. What is a Capacity Provider in ECS?",
+    "answer": "A Capacity Provider determines the infrastructure for running tasks in an ECS cluster. For ECS on EC2, it is associated with an auto-scaling group. Capacity provider strategies define how tasks and services are allocated to different infrastructure providers."
+  },
+  {
+    "question": "192. How does Elastic Container Registry (ECR) integrate with Docker?",
+    "answer": "ECR is used for storing private Docker images. Access is controlled by IAM roles. Docker images can be pushed to and pulled from ECR using AWS CLI commands, such as aws ecr get-login-password for authentication."
+  },
+  {
+    "question": "193. What is AWS Fargate and how does it differ from ECS on EC2?",
+    "answer": "AWS Fargate is a serverless compute engine for Docker containers. It eliminates the need to manage underlying EC2 infrastructure, scaling tasks as needed. Fargate requires no host port mapping and is ideal for simpler container orchestration compared to ECS on EC2, which involves provisioning and managing EC2 instances."
+  },
+  {
+    "question": "194. What are the steps for creating a Fargate Cluster?",
+    "answer": "Choose the Networking only option for ECS. VPCs and subnets are optional. ECS EC2 task definitions are incompatible with Fargate, so they need to be recreated. Fargate does not support host port mapping."
+  },
+  {
+    "question": "195. Why use CI/CD in software development?",
+    "answer": "CI/CD automates the build, test, and deployment processes to enhance efficiency, reduce human error, and speed up the release cycle. It allows for automated deployments across different stages (dev, staging, production) and can incorporate manual approvals if needed. Mastery of CI/CD is essential for effective AWS development."
+  },
+  {
+    "question": "196. What are the primary CI/CD services offered by AWS?",
+    "answer": "AWS CodeCommit: Source code repository service similar to GitHub. AWS CodePipeline: Automates the pipeline from code commit to deployment on Elastic Beanstalk. AWS CodeBuild: Builds and tests code. AWS CodeDeploy: Automates deployment to EC2 fleets (not Beanstalk)."
+  },
+  {
+    "question": "197. What is Continuous Integration (CI)?",
+    "answer": "Continuous Integration involves regularly pushing code to a repository where a build or test server (like CodeBuild) automatically checks it. This provides immediate feedback on the code’s quality, helping developers catch and fix bugs early and deploy frequently."
+  },
+  {
+    "question": "198. What are the benefits of Continuous Integration (CI)?",
+    "answer": "Early bug detection and fixing. Faster delivery of code once tested. Frequent deployments. Increased developer satisfaction due to unblocked workflows."
+  },
+  {
+    "question": "199. What is Continuous Delivery (CD)?",
+    "answer": "Continuous Delivery ensures that software can be reliably released at any time. It supports frequent, automated deployments, transitioning from infrequent major releases to more frequent updates, sometimes even multiple times a day."
+  },
+  {
+    "question": "200. How does AWS CodeCommit work and what are its benefits?",
+    "answer": "AWS CodeCommit is a fully managed source control service that hosts private Git repositories. Benefits include: Seamless integration with other AWS services. No size limits on repositories. Increased security and compliance with encryption and access controls. Better collaboration and backup capabilities."
+  },
+  {
+    "question": "201. What are some security features of AWS CodeCommit?",
+    "answer": "Encryption: Repositories are encrypted at rest using KMS and in transit using HTTPS or SSH. Authentication: Uses SSH keys, HTTPS credentials, and MFA. Authorization: Managed through IAM policies. Cross Account Access: Use IAM roles and STS to avoid sharing credentials directly."
+  },
+  {
+    "question": "202. How does CodePipeline manage continuous delivery?",
+    "answer": "AWS CodePipeline provides a visual workflow that integrates with sources (e.g., GitHub, CodeCommit), build tools (e.g., CodeBuild), and deployment services (e.g., CodeDeploy, Elastic Beanstalk). It organizes the process into stages with actions that can run sequentially or in parallel, with options for manual approvals."
+  },
+  {
+    "question": "203. What are CodePipeline artifacts and how are they used?",
+    "answer": "Artifacts in CodePipeline are files or data generated by each pipeline stage and stored in Amazon S3 buckets. They are used in subsequent stages of the pipeline."
+  },
+  {
+    "question": "204. What are some common troubleshooting steps for CodePipeline issues?",
+    "answer": "Monitor state changes and notifications in AWS CloudWatch. Check CloudTrail for API call audits. Ensure the IAM service role has adequate permissions. View detailed error information in the CodePipeline console."
+  },
+  {
+    "question": "205. What is AWS CodeBuild and what are its key features?",
+    "answer": "AWS CodeBuild is a fully managed build service that continuously scales and manages build environments. Features include: No server management or provisioning. Pay-as-you-go pricing based on build time. Docker-based builds with the ability to use custom Docker images. Integration with KMS, IAM, and VPC for security."
+  },
+  {
+    "question": "206. How does CodeBuild work with Docker?",
+    "answer": "CodeBuild uses Docker to create isolated build environments. It can build Docker images and run builds using custom Docker containers. CodeBuild also supports caching dependencies to speed up builds."
+  },
+  {
+    "question": "207. What is AWS CodeDeploy and how does it function?",
+    "answer": "AWS CodeDeploy automates application deployments to EC2 instances or on-premises servers. It requires a CodeDeploy Agent on each target instance and uses an appspec.yml file to define deployment instructions."
+  },
+  {
+    "question": "208. What are the primary components of AWS CodeDeploy?",
+    "answer": "Application: The deployment entity with a unique name. Compute Platform: EC2/On-Premises or Lambda. Deployment Configuration: Rules for deployment success or failure. Deployment Group: Tagged instances or auto-scaling groups. Deployment Type: In-place or Blue/Green deployment."
+  },
+  {
+    "question": "209. What are deployment strategies in CodeDeploy?",
+    "answer": "In-Place Deployment: Updates the existing instances. Blue/Green Deployment: Creates a new set of instances (green) and switches traffic if health checks pass."
+  },
+  {
+    "question": "210. How does CodeDeploy handle rollbacks?",
+    "answer": "CodeDeploy can automatically rollback to a previous version if a deployment fails or if a CloudWatch alarm threshold is met. Rollbacks redeploy the last known good version and update the version number."
+  },
+  {
+    "question": "211. What is AWS CloudFormation?",
+    "answer": "AWS CloudFormation is a service that allows you to define and provision AWS infrastructure as code. You write templates that describe the resources you need (such as EC2 instances, security groups, and load balancers), and CloudFormation automatically creates, updates, or deletes these resources as specified in the template."
+  },
+  {
+    "question": "212. What are the benefits of using AWS CloudFormation?",
+    "answer": "Infrastructure as Code: Automate the creation, updating, and deletion of resources, ensuring consistency. Version Control: Templates can be version-controlled using tools like Git. Cost Management: Track and estimate costs of resources within a stack. Productivity: Easily recreate infrastructure, automate diagrams, and manage stacks for different applications and environments. Leverage Existing Templates: Utilize pre-existing templates available online."
+  },
+  {
+    "question": "213. How does CloudFormation work?",
+    "answer": "Templates are written in JSON or YAML and uploaded to S3. CloudFormation references these templates to create or update stacks. You cannot edit existing templates directly; instead, you upload new versions to make changes. Stacks manage all resources defined in the template, and deleting a stack removes all its resources."
+  },
+  {
+    "question": "214. What is a CloudFormation stack?",
+    "answer": "A stack is a collection of AWS resources defined in a CloudFormation template that are managed as a single unit. You can create, update, or delete all resources in a stack with a single action."
+  },
+  {
+    "question": "215. What are CloudFormation StackSets?",
+    "answer": "StackSets extend CloudFormation stacks to deploy resources across multiple regions and AWS accounts, typically used in conjunction with AWS Organizations."
+  },
+  {
+    "question": "216. What are the primary components of a CloudFormation template?",
+    "answer": "Resources: The AWS resources defined in the template. Parameters: Inputs to the template that can be customized. Mappings: Fixed variables, such as environment-specific values. Outputs: Values exported from the stack to be used in other stacks. Conditions: Control resource creation based on conditions. Metadata: Additional information about the template."
+  },
+  {
+    "question": "217. What are CloudFormation resources?",
+    "answer": "Resources are the AWS components (e.g., EC2 instances, S3 buckets) defined in the CloudFormation template. They are mandatory components of a template and can reference each other."
+  },
+  {
+    "question": "218. How are CloudFormation parameters used?",
+    "answer": "Parameters allow you to input values into the template at runtime. They make templates reusable and adaptable to different environments. Parameters can be referenced within the template using the Fn::Ref function."
+  },
+  {
+    "question": "219. What are CloudFormation mappings?",
+    "answer": "Mappings are fixed values within the template that can be used to customize configurations based on factors like region or environment. They are defined in the template and can be retrieved using the Fn::FindInMap function."
+  },
+  {
+    "question": "220. How are CloudFormation outputs utilized?",
+    "answer": "Outputs define values that can be exported and used in other stacks or viewed in the AWS Console. They are useful for sharing resources across stacks and facilitating collaboration."
+  },
+  {
+    "question": "221. What are CloudFormation conditions and how are they used?",
+    "answer": "Conditions control the creation of resources or outputs based on certain criteria. They are defined in the template and can use intrinsic functions like Fn::If, Fn::And, and Fn::Equals to evaluate conditions."
+  },
+  {
+    "question": "222. What are CloudFormation transforms?",
+    "answer": "Transforms apply macros to process templates before deployment. AWS supports predefined macros, and custom macros can also be created to modify templates dynamically."
+  },
+  {
+    "question": "223. What are some CloudFormation intrinsic functions?",
+    "answer": "Fn::Ref: References parameters or resource attributes. Fn::GetAtt: Retrieves resource attributes. Fn::FindInMap: Returns a value from a mapping. Fn::ImportValue: Imports values from other stacks. Fn::Join: Joins values with a delimiter. Fn::Sub: Substitutes variables in strings."
+  },
+  {
+    "question": "224. How does CloudFormation handle stack creation and updates?",
+    "answer": "Stack Creation: If it fails, the default behavior is to roll back and delete all resources. Rollback can be disabled for troubleshooting. Stack Update: If an update fails, CloudFormation rolls back to the previous working state and provides logs for debugging."
+  },
+  {
+    "question": "225. Can CloudFormation handle dynamic resource creation?",
+    "answer": "No, CloudFormation templates must declare all resources in advance. It does not support dynamic code generation but allows predefined configurations to be reused across different environments."
+  },
+  {
+    "question": "226. Are all AWS services supported by CloudFormation?",
+    "answer": "Most AWS services are supported by CloudFormation. For unsupported services, you can use AWS Lambda Custom Resources to integrate them into CloudFormation templates."
+  },
+  {
+    "question": "227. What is AWS CloudWatch used for?",
+    "answer": "AWS CloudWatch is used for monitoring AWS resources and applications. It provides tools for tracking metrics, collecting logs, setting up alarms, and responding to events in real-time, helping ensure the performance, availability, and cost-effectiveness of your applications."
+  },
+  {
+    "question": "228. Why is monitoring important in AWS?",
+    "answer": "Monitoring is crucial for:\nDeployment: Ensures applications are deployed safely and automatically.\nApplication Performance: Helps track latency and prevent outages.\nTroubleshooting: Identifies and addresses issues before they impact users.\nPerformance and Cost Management: Monitors trends and scaling patterns.\nLearning and Improvement: Provides insights for optimization and enhancement."
+  },
+  {
+    "question": "229. What are the key components of AWS CloudWatch?",
+    "answer": "Metrics: Collect and track key performance indicators.\nLogs: Collect, monitor, analyze, and store log files.\nEvents: Send notifications and react to specific events.\nAlarms: Trigger notifications or actions based on metrics or events."
+  },
+  {
+    "question": "230. What is the difference between CloudWatch metrics and dimensions?",
+    "answer": "Metrics: Variables that represent data you want to monitor (e.g., CPUUtilization).\nDimensions: Attributes of a metric that help segment and filter the data (e.g., instance ID, environment)."
+  },
+  {
+    "question": "231. How does CloudWatch handle EC2 monitoring?",
+    "answer": "Basic Monitoring: Provides data every 5 minutes.\nDetailed Monitoring: Provides data every minute at an additional cost. This is useful for more precise scaling and monitoring.\nFree Tier: Includes 10 detailed monitoring metrics.\nCustom Metrics: EC2 memory usage is not included by default; it must be pushed as a custom metric."
+  },
+  {
+    "question": "232. How can you create and use CloudWatch custom metrics?",
+    "answer": "Define and send custom metrics using the PutMetricData API call.\nUse dimensions to segment metrics by attributes like instance ID or environment.\nResolution: Metrics can be high resolution (up to 1 second) or standard (1 minute)."
+  },
+  {
+    "question": "233. What are CloudWatch alarms and how do they work?",
+    "answer": "Alarms monitor specified metrics and trigger notifications or actions (e.g., Auto Scaling, EC2 actions, SNS notifications) based on predefined conditions. Alarm states include:\nOK: Metric is within the defined threshold.\nINSUFFICIENT_DATA: Not enough data to determine the state.\nALARM: Metric has breached the threshold."
+  },
+  {
+    "question": "234. How can CloudWatch Logs be utilized?",
+    "answer": "Collect logs from various sources like Elastic Beanstalk, ECS, Lambda, VPC Flow Logs, API Gateway, and more.\nLog Groups: Represent an application or service. Set expiration policies at this level.\nLog Streams: Represent instances, files, or containers within the log group.\nExport logs to S3 for archival or stream them to ElasticSearch for analytics."
+  },
+  {
+    "question": "235. What are CloudWatch log agents and their purpose?",
+    "answer": "Log agents (e.g., on EC2 instances) are used to send application logs to CloudWatch. They need appropriate IAM permissions and help in centralizing log collection and monitoring."
+  },
+  {
+    "question": "236. What are CloudWatch Events and how do they work?",
+    "answer": "CloudWatch Events provide a way to respond to AWS service changes and other events. They can be used to create schedules (e.g., cron jobs), trigger actions (e.g., Lambda functions, SQS/SNS messages), and create event patterns to react to specific conditions."
+  },
+  {
+    "question": "237. How does CloudWatch handle security and encryption?",
+    "answer": "CloudWatch Logs can be encrypted using AWS KMS (Key Management Service) at the log group level, ensuring that log data is secure."
+  },
+  {
+    "question": "238. What is the AWS CLI's role in managing CloudWatch logs?",
+    "answer": "The AWS CLI allows you to interact with CloudWatch logs, such as tailing logs in real-time, which can be useful for monitoring and troubleshooting."
+  },
+  {
+    "question": "239. What should you ensure when sending logs to CloudWatch?",
+    "answer": "Ensure that IAM permissions are correctly configured to allow applications and services to send logs to CloudWatch."
+  },
+  {
+    "question": "240. What is AWS CloudFront?",
+    "answer": "AWS CloudFront is a Content Delivery Network (CDN) that improves read performance by caching static content at edge locations around the world, enhancing user experience with faster content delivery."
+  },
+  {
+    "question": "241. How does CloudFront improve user experience?",
+    "answer": "CloudFront enhances user experience by caching content at edge locations closer to users, which reduces latency and load times. It also provides DDoS protection through integration with AWS Shield and AWS Web Application Firewall."
+  },
+  {
+    "question": "242. What is the purpose of CloudFront’s edge locations?",
+    "answer": "CloudFront's edge locations (216 globally) are used to cache static content and deliver it quickly to users around the world. This caching improves read performance and reduces the load on origin servers."
+  },
+  {
+    "question": "243. How can you secure access to S3 content using CloudFront?",
+    "answer": "To restrict access to S3 content:\nUse CloudFront Origin Access Control (OAC): OAC replaces the older Origin Access Identity (OAI) method for enhanced security.\nConfigure S3 bucket permissions: Ensure that CloudFront can access files but users cannot access the S3 bucket directly."
+  },
+  {
+    "question": "244. What is the difference between CloudFront and S3 Cross Region Replication?",
+    "answer": "CloudFront: Provides global edge network caching with TTL (Time-to-Live), ideal for static content that needs to be available everywhere. Updates are made in near real-time.\nS3 Cross Region Replication: Replicates files across regions, requiring setup for each region. Ideal for dynamic content needing low-latency availability in specific regions."
+  },
+  {
+    "question": "245. What is a CloudFront Cache Key?",
+    "answer": "A Cache Key is a unique identifier for objects in the cache, defaulting to the hostname and resource portion of the URL. Additional elements like HTTP headers, cookies, and query strings can be included to differentiate cache entries."
+  },
+  {
+    "question": "246. What are Cache Policies in CloudFront?",
+    "answer": "Cache Policies control how CloudFront caches content:\nHTTP Headers: None, Whitelist\nCookies: None, Whitelist, Include All-Except, All\nQuery Strings: None, Whitelist, Include All-Except, All\nTTL Control: Define cache duration, which can be set by the origin using Cache-Control or Expires headers."
+  },
+  {
+    "question": "247. What are Origin Request Policies in CloudFront?",
+    "answer": "Origin Request Policies determine which values (headers, cookies, query strings) are included in origin requests without affecting the Cache Key. They help manage what is sent to the origin server while avoiding duplicated cached content."
+  },
+  {
+    "question": "248. How does CloudFront handle cache invalidations?",
+    "answer": "You can perform cache invalidations to force a refresh of cached content before the TTL expires. This can be done for specific paths or the entire cache, using the CreateInvalidation API."
+  },
+  {
+    "question": "249. What are Cache Behaviors in CloudFront?",
+    "answer": "Cache Behaviors allow you to configure different settings for specific URL path patterns. For example:\n/images/* → Route to S3\n/api/* → Route to Application Load Balancer\n/* (default) → Route to S3"
+  },
+  {
+    "question": "250. How does CloudFront Geo Restriction work?",
+    "answer": "Geo Restriction allows you to control who can access your content based on geographic location:\nAllowlist: Permit access only from specified countries.\nBlocklist: Prevent access from specified countries."
+  },
+  {
+    "question": "251. What are CloudFront Signed URLs and Signed Cookies?",
+    "answer": "Signed URLs: Provide access to individual files with a policy defining expiration and IP ranges.\nSigned Cookies: Provide access to multiple files with one cookie, useful for shared content or private content."
+  },
+  {
+    "question": "252. What is the difference between CloudFront Signed URLs and S3 Pre-Signed URLs?",
+    "answer": "CloudFront Signed URLs: Allow access to content across different origins, include options for IP filtering and path expiration, and leverage caching.\nS3 Pre-Signed URLs: Grant temporary access to S3 objects based on IAM credentials and have limited caching capabilities."
+  },
+  {
+    "question": "253. How does CloudFront pricing work?",
+    "answer": "CloudFront pricing is based on data transfer and requests at edge locations. You can reduce costs by selecting Price Classes, which vary by region:\nPrice Class All: Includes all regions for best performance.\nPrice Class 200: Excludes the most expensive regions.\nPrice Class 100: Includes only the least expensive regions."
+  },
+  {
+    "question": "254. What are CloudFront Origin Groups?",
+    "answer": "Origin Groups consist of a primary and secondary origin to increase high availability and failover. If the primary origin fails, the secondary one is used to ensure continuous content delivery."
+  },
+  {
+    "question": "255. What is CloudFront Field Level Encryption?",
+    "answer": "Field Level Encryption adds an extra layer of security by encrypting sensitive information at the edge, close to users. It uses asymmetric encryption to protect specific fields in POST requests."
+  },
+  {
+    "question": "256. How do CloudFront Real-Time Logs work?",
+    "answer": "Real-Time Logs send data on requests received by CloudFront to Kinesis Data Streams, allowing you to monitor and analyze content delivery performance with customizable sampling rates and specific fields."
+  },
+  {
+    "question": "257. What is AWS CloudTrail used for?",
+    "answer": "AWS CloudTrail provides governance, compliance, and audit capabilities for your AWS account. It tracks and records API calls made through the AWS Management Console, SDKs, CLI, and AWS services."
+  },
+  {
+    "question": "258. How is CloudTrail enabled and what does it log?",
+    "answer": "CloudTrail is enabled by default in AWS accounts. It logs API activity, including actions performed through the console, SDKs, CLI, and AWS services, providing a history of events and API calls."
+  },
+  {
+    "question": "259. How can CloudTrail logs be used in conjunction with other AWS services?",
+    "answer": "CloudTrail logs can be sent to CloudWatch Logs for monitoring and alerting. They can also be used with AWS Config for compliance checks and deeper insights into resource changes."
+  },
+  {
+    "question": "260. What is the importance of CloudTrail in resource management?",
+    "answer": "CloudTrail is crucial for tracking changes and actions related to resources. If a resource is deleted, CloudTrail can provide a history of the API calls leading up to that event."
+  },
+  {
+    "question": "261. What is AWS Config and how is it used?",
+    "answer": "AWS Config is used for compliance checking, configuration monitoring, and auditing AWS resources. It provides detailed historical information and can run periodic compliance checks."
+  },
+  {
+    "question": "262. What permissions are required for AWS Config to function properly?",
+    "answer": "AWS Config requires: Read-Only permissions to AWS resources. Write access to an S3 bucket for storing configuration snapshots. Publish access to SNS for notifications."
+  },
+  {
+    "question": "263. How can AWS Config be integrated with CloudTrail?",
+    "answer": "AWS Config can use CloudTrail data to gain deeper insights into resource changes and configurations. CloudTrail can also be used to audit AWS Config itself for compliance purposes."
+  },
+  {
+    "question": "264. What is AWS X-Ray and what are its main advantages?",
+    "answer": "AWS X-Ray is a tool for debugging and analyzing applications, particularly in production environments. It helps troubleshoot performance bottlenecks, understand microservice dependencies, pinpoint service issues, review request behavior, and meet SLA requirements."
+  },
+  {
+    "question": "265. What are the key components of X-Ray tracing?",
+    "answer": "X-Ray tracing involves: Segments: Records tracing information about a request. Subsegments: Provides granularity for segments, recording details of calls to AWS services, HTTP APIs, or SQL queries. Trace: Collection of segments and subsegments forming an end-to-end view of a request. Annotations: Key-value pairs used to index traces for search and filtering. Metadata: Key-value pairs not indexed, used for additional information but not searchable."
+  },
+  {
+    "question": "266. How do you enable X-Ray in different environments?",
+    "answer": "For code: Import the AWS X-Ray SDK (Java, Python, Go, Node.js, .NET). For AWS services: X-Ray is integrated by default in AWS Lambda and other services. You may need to install the X-Ray daemon for EC2 and on-premise applications. IAM rights: Ensure the application or instance has the necessary IAM permissions to write data to X-Ray."
+  },
+  {
+    "question": "267. What are X-Ray Sampling Rules and how do they work?",
+    "answer": "Sampling Rules determine which requests are recorded by X-Ray. By default, X-Ray records the first request per second and 5% of additional requests. Custom rules can be created to define specific sampling rates and reservoirs."
+  },
+  {
+    "question": "268. What are the key X-Ray APIs and their functions?",
+    "answer": "Write APIs: PutTraceSegments: Upload trace segment documents. PutTelemetryRecord: Upload telemetry data. Read APIs: GetServiceGraph: Retrieve the main service graph. BatchGetTraces: Retrieve trace documents by IDs. GetTraceSummaries: Retrieve IDs and annotations for traces over a time frame. GetTraceGraph: Retrieve service graphs for specific trace IDs."
+  },
+  {
+    "question": "269. What should you check if X-Ray is not working on EC2?",
+    "answer": "Ensure the EC2 IAM Role has the proper permissions. Verify that the X-Ray Daemon is running on the EC2 instance."
+  },
+  {
+    "question": "270. How can X-Ray be configured for AWS Lambda?",
+    "answer": "Ensure the Lambda function has an IAM execution role with AWSX-RayWriteOnlyAccess policy. Import X-Ray in the Lambda code."
+  },
+  {
+    "question": "271. What is AWS SQS and what does it do?",
+    "answer": "AWS SQS is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. It allows asynchronous communication between different components of an application."
+  },
+  {
+    "question": "272. What are the key differences between Standard Queues and FIFO Queues in SQS?",
+    "answer": "Standard Queues: Provide high throughput and can handle up to 10,000 messages per second. Offer best-effort ordering and can have duplicate messages. Messages are retained for up to 14 days. FIFO Queues: Ensure exactly-once processing and maintain the order of messages. Limited to 300 messages per second without batching, or 3,000 messages per second with batching. Messages are ordered and processed in the sequence they are sent."
+  },
+  {
+    "question": "273. How does the Visibility Timeout work in SQS?",
+    "answer": "The Visibility Timeout is the period during which a message is hidden from other consumers after being read by one. It can be set from 0 seconds to 12 hours. If the message is not processed within this time, it becomes visible again for other consumers."
+  },
+  {
+    "question": "274. What is a Dead Letter Queue (DLQ) in SQS?",
+    "answer": "A DLQ is used to isolate and troubleshoot messages that cannot be processed successfully. Messages are moved to a DLQ after reaching a specified threshold of maximum receives, allowing for debugging and analysis. DLQs are separate queues attached to the main queue."
+  },
+  {
+    "question": "275. What is Long Polling in SQS and how does it work?",
+    "answer": "Long Polling is a feature that allows SQS to wait for messages to become available before returning a response, reducing the number of API calls and improving efficiency. The wait time can be set between 1 and 20 seconds."
+  },
+  {
+    "question": "276. How does the SQS Extended Client work?",
+    "answer": "The SQS Extended Client Library allows you to handle messages larger than the standard 256KB limit by storing the message payload in S3. The message itself contains a pointer to the S3 object, which is retrieved when the message is consumed."
+  },
+  {
+    "question": "277. What is AWS SNS and what are its primary uses?",
+    "answer": "AWS SNS is a fully managed messaging service that facilitates both application-to-application (A2A) and application-to-person (A2P) communication. It supports multiple subscriber types, including SQS, HTTP/HTTPS, Lambda, email, SMS, and mobile notifications."
+  },
+  {
+    "question": "278. How does SNS handle message delivery?",
+    "answer": "SNS sends messages to all subscribed endpoints of a topic. Subscribers can include SQS queues, Lambda functions, HTTP/HTTPS endpoints, emails, and SMS. SNS supports high throughput with up to 10 million subscriptions per topic."
+  },
+  {
+    "question": "279. What are the security features of SNS?",
+    "answer": "SNS provides encryption in-flight using HTTPS, at-rest encryption using KMS keys, and client-side encryption if required. Access controls are managed through IAM policies and SNS access policies."
+  },
+  {
+    "question": "280. How do you publish a message to an SNS topic?",
+    "answer": "To publish a message to an SNS topic, you create a topic, set up subscriptions, and then publish messages to the topic. You can also publish directly from an application or through platform endpoints."
+  },
+  {
+    "question": "281. What is AWS Kinesis and what are its main components?",
+    "answer": "AWS Kinesis is a managed service for collecting, processing, and analyzing real-time data streams. The main components are: Kinesis Streams: For real-time streaming data ingestion. Kinesis Analytics: For real-time analytics using SQL on Kinesis Streams. Kinesis Firehose: For loading streaming data into destinations like S3, Redshift, and Elasticsearch."
+  },
+  {
+    "question": "282. What are Shards in Kinesis Streams?",
+    "answer": "Shards are the base throughput unit of a Kinesis stream. Each shard provides a write capacity of 1MB/s or 1,000 records per second and a read capacity of 2MB/s. Data is ordered within shards and can be replayed. Billing is based on the number of shards."
+  },
+  {
+    "question": "283. How does the Kinesis Client Library (KCL) work?",
+    "answer": "The Kinesis Client Library (KCL) is a Java library that helps process data from Kinesis Streams. It ensures that each shard is read by only one KCL instance and checkpoints progress in DynamoDB. Records are read in order within each shard."
+  },
+  {
+    "question": "284. What are the security features of Kinesis?",
+    "answer": "Security features include IAM policies for access control, encryption in-flight using HTTPS, encryption at rest using KMS, and optional client-side encryption. VPC Endpoints are also available for Kinesis."
+  },
+  {
+    "question": "285. How does Kinesis Firehose handle data delivery?",
+    "answer": "Kinesis Firehose is used for real-time data loading into destinations like S3, Redshift, and Elasticsearch. It automatically scales to match incoming data volume, provides low latency (60 seconds), and charges based on the amount of data processed."
+  },
+  {
+    "question": "286. What is the primary advantage of serverless architecture?",
+    "answer": "The primary advantage of serverless architecture is that developers do not need to manage or provision servers. They only need to deploy code, specifically functions, while the serverless platform handles the underlying infrastructure, scaling, and availability."
+  },
+  {
+    "question": "287. Which AWS services are considered serverless?",
+    "answer": "AWS serverless services include AWS Lambda, Step Functions, DynamoDB, AWS Cognito, AWS API Gateway, Amazon S3, AWS SNS, AWS SQS, AWS Kinesis, and Aurora Serverless."
+  },
+  {
+    "question": "288. What are the key benefits of using AWS Lambda?",
+    "answer": "Key benefits of AWS Lambda include: No servers to manage Automatic scaling Pay-per-request and compute time pricing Integration with a wide range of AWS services Support for multiple programming languages Easy monitoring with AWS CloudWatch"
+  },
+  {
+    "question": "289. How does AWS Lambda handle scaling?",
+    "answer": "AWS Lambda handles scaling automatically by managing the number of instances required to handle the incoming request load. It scales up or down based on the number of incoming requests without manual intervention."
+  },
+  {
+    "question": "290. What is the pricing model for AWS Lambda?",
+    "answer": "AWS Lambda pricing is based on: Number of requests: First 1,000,000 requests are free; subsequent requests are charged at $0.20 per million requests. Duration: Charged based on the amount of compute time used, in increments of 100 milliseconds. There is a free tier of 400,000 GB-seconds per month."
+  },
+  {
+    "question": "291. What is the default and maximum execution timeout for AWS Lambda functions?",
+    "answer": "The default execution timeout for AWS Lambda functions is 3 seconds, with a maximum allowed timeout of 15 minutes (900 seconds)."
+  },
+  {
+    "question": "292. What are the two types of AWS Lambda function invocations?",
+    "answer": "The two types of AWS Lambda function invocations are: Synchronous Invocation: The function is executed and the result is returned immediately. Asynchronous Invocation: The function execution is triggered and the result is not immediately required; Lambda manages retries and error handling internally."
+  },
+  {
+    "question": "293. How does AWS Lambda handle errors in asynchronous invocations?",
+    "answer": "In asynchronous invocations, AWS Lambda retries the function up to three times with increasing intervals (exponential back-off). If the function still fails after retries, the event can be sent to an SNS topic or SQS queue."
+  },
+  {
+    "question": "294. How does AWS Lambda integrate with API Gateway?",
+    "answer": "AWS Lambda integrates with API Gateway by allowing the API Gateway to invoke Lambda functions in response to HTTP requests. The API Gateway converts the HTTP request into a JSON event which is passed to the Lambda function, and then converts the function’s response back into an HTTP response."
+  },
+  {
+    "question": "295. What is Lambda@Edge and what are its use cases?",
+    "answer": "Lambda@Edge allows you to run Lambda functions at AWS edge locations via CloudFront. Use cases include request filtering, modifying responses, website security, dynamic content delivery, SEO optimization, and bot mitigation."
+  },
+  {
+    "question": "296. What is an event source mapping in AWS Lambda?",
+    "answer": "An event source mapping connects a Lambda function to an event source such as SQS queues or Kinesis streams. The Lambda function is invoked in response to events from these sources, and the function processes records or messages in batches."
+  },
+  {
+    "question": "297. How does Lambda handle error processing for events from SQS queues?",
+    "answer": "For events from SQS queues, Lambda uses long polling to retrieve messages. If errors occur, Lambda retries processing and can use a Dead Letter Queue (DLQ) to capture failed messages. The visibility timeout for the queue should be set to a value that accounts for the Lambda function’s timeout."
+  },
+  {
+    "question": "298. What are Lambda versions and aliases?",
+    "answer": "Lambda versions are immutable snapshots of a Lambda function’s code and configuration. Aliases are mutable pointers to these versions, allowing you to manage different stages like dev, test, and prod, and implement Blue/Green deployments by routing traffic between versions."
+  },
+  {
+    "question": "299. How can CodeDeploy be used with Lambda?",
+    "answer": "CodeDeploy can be used with Lambda to automate traffic shifting between Lambda function versions. It supports deployment methodologies such as linear growth, canary deployments, and all-at-once deployments, and can roll back changes if needed."
+  },
+  {
+    "question": "300. What are some important limits to be aware of for AWS Lambda functions?",
+    "answer": "Key limits include: Memory: 128MB to 3008MB Execution timeout: Up to 900 seconds (15 minutes) Environment variables size: 4KB Disk space (/tmp): 512MB Concurrent executions: Up to 1000 per account"
+  },
+  {
+    "question": "301. What are some best practices for working with AWS Lambda?",
+    "answer": "Best practices include: Performing heavy-duty work outside of the function handler Using environment variables for configuration Minimizing deployment package size Avoiding recursive function calls"
+  },
+  {
+    "question": "302. What is DynamoDB?",
+    "answer": "DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. It is serverless, meaning there are no servers to manage, and it automatically scales up and down to adjust for capacity and maintain performance."
+  },
+  {
+    "question": "303. What are the data types supported in DynamoDB?",
+    "answer": "DynamoDB supports several data types including Scalar types (String, Number, Binary, Boolean, Null), Document types (List, Map), and Set types (String Set, Number Set, Binary Set)."
+  },
+  {
+    "question": "304. What is the maximum size of an item in DynamoDB?",
+    "answer": "The maximum size of an item in DynamoDB is 400 KB."
+  },
+  {
+    "question": "305. What are the two types of primary keys in DynamoDB?",
+    "answer": "The two types of primary keys are: Partition Key (HASH): A single attribute used as the primary key, which must be unique and diverse. Partition Key + Sort Key (HASH-RANGE): A composite key where the partition key groups the data and the sort key allows for sorting within the partition."
+  },
+  {
+    "question": "306. How is read and write capacity measured in DynamoDB?",
+    "answer": "Read Capacity Units (RCU): Represents the number of strongly consistent reads per second or two eventually consistent reads per second for an item up to 4 KB in size. Write Capacity Units (WCU): Represents one write per second for an item up to 1 KB in size."
+  },
+  {
+    "question": "307. What is burst capacity in DynamoDB?",
+    "answer": "Burst capacity allows DynamoDB tables to temporarily exceed provisioned throughput limits by using burst credits. If there are no burst credits available, a ProvisionedThroughputException will be thrown."
+  },
+  {
+    "question": "308. What is the difference between eventually consistent and strongly consistent reads in DynamoDB?",
+    "answer": "Eventually Consistent Reads: Returns data that might not reflect the most recent write. This is the default read consistency. Strongly Consistent Reads: Returns data that reflects the most recent write. This option ensures the most up-to-date data but can be slower than eventually consistent reads."
+  },
+  {
+    "question": "309. What are common causes of throttling in DynamoDB?",
+    "answer": "Common causes of throttling include hot keys, hot partitions, and very large items. Throttling can occur when read or write capacity units are exceeded."
+  },
+  {
+    "question": "310. How can you mitigate throttling in DynamoDB?",
+    "answer": "To mitigate throttling, you can use exponential back-off for retries, distribute partition keys more evenly, and consider using DynamoDB Accelerator (DAX) for read-heavy workloads."
+  },
+  {
+    "question": "311. What is the difference between a Local Secondary Index (LSI) and a Global Secondary Index (GSI)?",
+    "answer": "Local Secondary Index (LSI): Allows for a different sort key within the same partition key, up to 5 LSIs per table. It must be defined at table creation time. Global Secondary Index (GSI): Allows for querying on attributes other than the primary key, with a new partition and optional sort key. GSIs can be created and modified after the table is created."
+  },
+  {
+    "question": "312. What is DynamoDB Streams and how is it used?",
+    "answer": "DynamoDB Streams captures changes (create, update, delete) to items in a table and pushes them into a stream. These changes can be read by AWS Lambda, EC2 instances, or other services for processing, analytics, or replication."
+  },
+  {
+    "question": "313. What is the purpose of TTL (Time to Live) in DynamoDB?",
+    "answer": "TTL automatically deletes items from DynamoDB tables after a specified expiry date/time. It helps manage table size and adhere to regulatory compliance without additional cost or manual intervention."
+  },
+  {
+    "question": "314. What are DynamoDB Transactions?",
+    "answer": "DynamoDB Transactions provide the ability to perform multiple operations (create, update, delete) across multiple tables atomically, ensuring 'all or nothing' execution. Transactional operations consume twice the WCU/RCU compared to standard operations."
+  },
+  {
+    "question": "315. What are the security features available for DynamoDB?",
+    "answer": "DynamoDB offers several security features, including: IAM Policies: For access control and permissions. Encryption at Rest: Using AWS KMS. Encryption in Transit: Using SSL/TLS. VPC Endpoints: For accessing DynamoDB without traversing the internet."
+  },
+  {
+    "question": "316. How can you perform backup and restore operations in DynamoDB?",
+    "answer": "You can create on-demand backups of DynamoDB tables and restore them to the same or different table. Point-in-time recovery allows you to restore to any second within the last 35 days."
+  },
+  {
+    "question": "317. What is API Gateway used for in AWS?",
+    "answer": "API Gateway allows the creation of REST APIs, which can be public and accessible to clients. It can proxy requests to Lambda functions and other services with HTTP endpoints. It supports WebSockets, handles API versioning, multiple environments, and security."
+  },
+  {
+    "question": "318. What are the benefits of using API Gateway with AWS Lambda?",
+    "answer": "API Gateway with AWS Lambda provides a serverless infrastructure, eliminating the need for infrastructure management. It integrates seamlessly and handles request and response transformations and validation."
+  },
+  {
+    "question": "319. What are the three types of API Gateway endpoint types?",
+    "answer": "Edge-Optimized: For global clients, routing requests through CloudFront Edge locations. Regional: For clients within the same region, can be combined with CloudFront for caching strategies. Private: Accessible only within a VPC using VPC endpoints."
+  },
+  {
+    "question": "320. How are changes made in API Gateway deployed?",
+    "answer": "Changes are deployed to stages in API Gateway. Stages like dev, test, and prod can be configured separately. Each stage can have its own configuration parameters and can be rolled back if needed."
+  },
+  {
+    "question": "321. What are Canary Deployments in API Gateway?",
+    "answer": "Canary Deployments allow testing new API versions by routing a percentage of traffic to the new version. Metrics and logs are separated for the original and canary stages, which helps in evaluating the new version."
+  },
+  {
+    "question": "322. What are the integration types available in API Gateway?",
+    "answer": "MOCK: API Gateway responds without forwarding the request to the back-end. HTTP / AWS (Lambda and other services): Forwards requests, with options to modify them. AWS_PROXY (Lambda Proxy): Passes the request to Lambda without modification. HTTP_PROXY: Similar to AWS_PROXY, used for other back-end services."
+  },
+  {
+    "question": "323. What are Mapping Templates in API Gateway?",
+    "answer": "Mapping Templates are used to transform request and response data between the client and the back-end service using Velocity Template Language (VTL). They are especially useful for integrating JSON with XML-based SOAP services."
+  },
+  {
+    "question": "324. How can Swagger/OpenAPI specs be used with API Gateway?",
+    "answer": "Swagger/OpenAPI specs can be imported into API Gateway to quickly define APIs. They can also be exported to allow other applications to generate code from the defined APIs."
+  },
+  {
+    "question": "325. What are the caching capabilities in API Gateway?",
+    "answer": "Caching reduces back-end calls and is defined per stage. The default TTL is 3000 seconds, but it can be adjusted. Cache capacity ranges from 0.5GB to 237GB, and cache can be encrypted and invalidated as needed."
+  },
+  {
+    "question": "326. What is the purpose of usage plans and API keys in API Gateway?",
+    "answer": "Usage plans define who can access API stages and how many requests they can make. API keys are used to authenticate clients and control access. Usage plans can set throttle and quota limits."
+  },
+  {
+    "question": "327. What are the options for monitoring and logging in API Gateway?",
+    "answer": "CloudWatch Logs: Can be enabled at the stage level to log request/response details. X-Ray: Provides tracing information to understand the interactions between API Gateway and AWS Lambda. CloudWatch Metrics: Includes metrics like CacheHitCount, CacheMissCount, IntegrationLatency, and Latency."
+  },
+  {
+    "question": "328. What are some common API Gateway errors and their HTTP status codes?",
+    "answer": "4xx Errors: 400: Bad Request 403: Access Denied 428: Quota Exceeded 5xx Errors: 502: Bad Gateway 503: Service Unavailable 504: Integration Failure"
+  },
+  {
+    "question": "329. What is required for CORS configuration in API Gateway?",
+    "answer": "CORS must be enabled to support requests from other domains, requiring the OPTIONS preflight request to include headers such as Access-Control-Allow-Methods, Access-Control-Allow-Headers, and Access-Control-Allow-Origin."
+  },
+  {
+    "question": "330. How is security managed in API Gateway?",
+    "answer": "Security is managed through IAM permissions, resource policies, and integrations with Cognito User Pools for authentication. IAM policies control access and can support cross-account access and IP restrictions."
+  },
+  {
+    "question": "331. What are the main differences between HTTP APIs and REST APIs in API Gateway?",
+    "answer": "HTTP APIs: Low latency, cost-effective, support AWS Lambda proxy, HTTP proxy, and private integrations without data mapping. Supports OIDC, OAuth2, and CORS, but lacks usage plans and API keys. REST APIs: Supports more features like Swagger/OpenAPI, detailed authorization options, and API keys."
+  },
+  {
+    "question": "332. What are WebSocket APIs used for in API Gateway?",
+    "answer": "WebSocket APIs facilitate two-way interactive communication between users and servers, useful for real-time applications like chat, collaboration platforms, multiplayer games, and trading platforms."
+  },
+  {
+    "question": "333. What is AWS SAM?",
+    "answer": "AWS SAM (Serverless Application Model) is a framework for developing and deploying serverless applications using YAML configuration. It simplifies the management of serverless resources and generates CloudFormation code."
+  },
+  {
+    "question": "334. How does SAM indicate that a template is a SAM template?",
+    "answer": "SAM templates include a Transform header with the value 'AWS::Serverless-2016-10-31'."
+  },
+  {
+    "question": "335. What are some serverless resource types supported by SAM?",
+    "answer": "SAM supports the following serverless resource types:\nAWS::Serverless::Function\nAWS::Serverless::Api\nAWS::Serverless::SimpleTable"
+  },
+  {
+    "question": "336. What commands are used to package and deploy applications with SAM?",
+    "answer": "To package: aws cloudformation package or sam package\nTo deploy: sam deploy"
+  },
+  {
+    "question": "337. What is the purpose of Amazon Cognito?",
+    "answer": "Amazon Cognito provides user authentication, authorization, and user management for web and mobile applications. It integrates with API Gateway and Application Load Balancer (ALB)."
+  },
+  {
+    "question": "338. What are the two types of Cognito pools and their purposes?",
+    "answer": "Cognito User Pools: Manage user sign-in and user directories. Supports functionalities like login, password reset, email/phone verification, MFA, and federated identities.\nCognito Identity Pools (Federated Identities): Provide AWS credentials to users for accessing AWS resources. It integrates with Cognito User Pools and supports public providers, OpenID Connect, SAML, and custom login servers."
+  },
+  {
+    "question": "339. What is Cognito Sync and what is its current status?",
+    "answer": "Cognito Sync was used to synchronize data across devices and has been deprecated. It is recommended to use AppSync for data synchronization."
+  },
+  {
+    "question": "340. What are Cognito User Pools Lambda Triggers?",
+    "answer": "Cognito User Pools can invoke Lambda functions synchronously on the following triggers:\nAuthentication events: pre auth, post auth, pre token generation\nSign-up events: pre sign-up, post confirmation, migrate user\nMessage events: custom message\nToken creation events: pre token generation"
+  },
+  {
+    "question": "341. What is the hosted authentication UI in Cognito?",
+    "answer": "The hosted authentication UI in Cognito provides a customizable sign-up and sign-in page, which can be integrated with social logins, OIDC, or SAML. It allows customization of logos and CSS."
+  },
+  {
+    "question": "342. How are IAM roles used with Cognito Identity Pools?",
+    "answer": "IAM roles are defined for authenticated and guest users in Cognito Identity Pools. Rules can be set to assign roles based on user IDs, and IAM credentials are obtained through STS. Roles must include a trust policy for Cognito Identity Pools."
+  },
+  {
+    "question": "343. What are AWS Step Functions used for?",
+    "answer": "AWS Step Functions are used to build visual workflows to orchestrate Lambda functions and other services. They enable the creation of complex workflows with sequence, parallel execution, conditions, timeouts, and error handling."
+  },
+  {
+    "question": "344. What is the maximum execution time for Step Functions?",
+    "answer": "The maximum execution time for Standard Step Functions is 1 year, while Express Step Functions have a maximum duration of 5 minutes."
+  },
+  {
+    "question": "345. What are the key differences between Standard and Express Step Functions?",
+    "answer": "Standard Step Functions:\nMaximum duration: 1 year\nExactly-once workflow execution\nExecution start rate: 2000 per second\nGenerally more expensive per state transition\nExpress Step Functions:\nMaximum duration: 5 minutes\nAt-least-once workflow execution\nExecution start rate: 100,000 per second\nCheaper per number of executions"
+  },
+  {
+    "question": "346. How do Step Functions handle errors?",
+    "answer": "By default, a failure in a state causes the entire execution to fail. Failures can be retried with exponential backoff or moved on to the next state. Best practices include including data in the error message for better diagnostics."
+  },
+  {
+    "question": "347. What are common use cases for AWS Step Functions?",
+    "answer": "Common use cases include order fulfillment, data processing, web applications, and any workflow that requires orchestration of multiple services."
+  },
+  {
+    "question": "348. What is AWS AppSync?",
+    "answer": "AWS AppSync is a managed service that uses GraphQL to build APIs on AWS. It allows applications to request exact data and can combine data from multiple sources, including NoSQL data stores, RDS databases, and HTTP APIs."
+  },
+  {
+    "question": "349. What types of datasets can be used with AWS AppSync?",
+    "answer": "AWS AppSync can use datasets from NoSQL data stores, RDS databases, HTTP APIs, and more."
+  },
+  {
+    "question": "350. What integrations are supported by AWS AppSync?",
+    "answer": "AWS AppSync integrates with DynamoDB, Aurora, ElasticSearch, and supports custom resources using AWS Lambda."
+  },
+  {
+    "question": "351. How does AWS AppSync support real-time data retrieval?",
+    "answer": "AWS AppSync supports real-time data retrieval using WebSocket and MQTT protocols."
+  },
+  {
+    "question": "352. What is required to get started with AWS AppSync?",
+    "answer": "To get started with AWS AppSync, you need a GraphQL schema."
+  },
+  {
+    "question": "353. What are the four ways to authorize applications to interact with AppSync?",
+    "answer": "The four ways to authorize applications with AppSync are:\nAPI_KEY\nAWS_IAM\nOPENID_CONNECT (OpenID Connect provider/JWT)\nAMAZON_COGNITO_USER_POOLS"
+  },
+  {
+    "question": "354. How can custom domains and HTTPS be set up for AWS AppSync?",
+    "answer": "For custom domains and HTTPS, CloudFront can be used in front of AppSync."
+  },
+  {
+    "question": "355. What is the purpose of AWS STS?",
+    "answer": "AWS STS allows granting limited and temporary access to AWS resources, with credentials valid for up to 1 hour."
+  },
+  {
+    "question": "356. What are the main STS APIs and their uses?",
+    "answer": "AssumeRole: Assume roles within or across AWS accounts.\nAssumeRoleWithSAML: Get credentials for users logged in with SAML.\nAssumeRoleWithWebIdentity: Get credentials for users logged in with an identity provider (e.g., Facebook, Google).\nGetSessionToken: Get a session token for MFA login.\nGetFederationToken: Obtain temporary tokens for federated users.\nGetCallerIdentity: Get details about the IAM user or role making the API call.\nDecodeAuthorizationMessage: Decode error messages when an AWS API call is denied."
+  },
+  {
+    "question": "357. How does STS handle MFA (Multi-Factor Authentication)?",
+    "answer": "Use the GetSessionToken API from STS to get a session token with MFA. An IAM policy should include the condition aws:MultiFactorAuthPresent:true. The response includes an Access ID, Secret Key, Session Token, and Expiration Date."
+  },
+  {
+    "question": "358. How does IAM handle authorization decision evaluation?",
+    "answer": "If an explicit DENY condition is present, access is denied.\nIf an ALLOW condition is present and no DENY, access is allowed.\nIf both DENY and ALLOW conditions exist, DENY takes precedence."
+  },
+  {
+    "question": "359. What is the difference between IAM Policies and S3 Bucket Policies?",
+    "answer": "IAM Policies are attached to users, roles, and groups and define what actions are allowed or denied.\nS3 Bucket Policies are attached directly to buckets and control access to the objects within them."
+  },
+  {
+    "question": "360. How do dynamic policies work in IAM?",
+    "answer": "Dynamic policies use special variables (e.g., ${aws:username}) to apply rules dynamically to users. This approach scales better than creating individual policies for each user."
+  },
+  {
+    "question": "361. What are the different types of IAM policies?",
+    "answer": "AWS Managed Policies: Maintained and updated by AWS, suitable for power users and administrators.\nCustomer Managed Policies: Created and managed by users, reusable, version-controlled, and best practice for granular control.\nInline Policies: Attached directly to a single IAM principal, deleted with the principal, and limited to 2KB in size."
+  },
+  {
+    "question": "362. What permissions are needed to pass a role to an AWS service?",
+    "answer": "To pass a role to a service, you need the iam:PassRole permission. This permission is often accompanied by iam:GetRole to view the role being passed."
+  },
+  {
+    "question": "363. Can any IAM role be passed to any AWS service?",
+    "answer": "No, IAM roles can only be passed to services that their trust policy allows. The trust policy defines which services or principals can assume the role."
+  },
+  {
+    "question": "364. What is Microsoft Active Directory?",
+    "answer": "Microsoft Active Directory (AD) is a database found on any Windows Server with AD Domain Services. It stores information about objects such as users, accounts, computers, printers, file shares, and security groups, and provides centralized security management. Objects are organized in a tree structure, and a group of trees forms a forest."
+  },
+  {
+    "question": "365. What are the different types of AWS Directory Services?",
+    "answer": "The different types of AWS Directory Services are:\nAWS Managed Microsoft AD: Allows creating and managing an AD in AWS, supports MFA, and can establish trust with on-premises AD.\nAD Connector: A proxy to redirect requests to on-premises AD, where users are managed.\nSimple AD: An AD-compatible managed directory on AWS that cannot be joined with on-premises AD."
+  },
+  {
+    "question": "366. What is encryption in flight?",
+    "answer": "Encryption in flight (SSL) ensures that data is encrypted before transmission and decrypted upon receipt. It protects data during transmission to prevent man-in-the-middle (MITM) attacks."
+  },
+  {
+    "question": "367. What is server-side encryption at rest?",
+    "answer": "Server-side encryption at rest involves encrypting data after it is received by the server. The data is decrypted before being sent back to the client, and the encryption/decryption key must be managed securely."
+  },
+  {
+    "question": "368. What is client-side encryption?",
+    "answer": "Client-side encryption involves encrypting data by the client before it is sent to the server. The server cannot decrypt the data, which is decrypted by the receiving client. Envelope Encryption is often used for client-side encryption."
+  },
+  {
+    "question": "369. What is AWS KMS used for?",
+    "answer": "AWS KMS is used to manage encryption keys for controlling access to data. It integrates with various AWS services to provide encryption capabilities and allows management of keys and policies."
+  },
+  {
+    "question": "370. What are the types of Customer Master Keys (CMKs) in KMS?",
+    "answer": "The types of CMKs in KMS are:\nSymmetric Keys: AES-256 keys used for encryption and decryption, suitable for envelope encryption.\nAsymmetric Keys: RSA and ECC key pairs used for encryption/decryption or signing/verification. Public keys can be downloaded, but private keys remain within AWS."
+  },
+  {
+    "question": "371. What operations can be performed with KMS?",
+    "answer": "With KMS, you can create, rotate, disable, enable keys, and audit key usage using CloudTrail. Key management includes symmetric and asymmetric keys, and you can perform operations like encryption, decryption, and generating data keys."
+  },
+  {
+    "question": "372. What is envelope encryption and how does it work?",
+    "answer": "Envelope encryption involves using KMS to generate a data encryption key (DEK) that is used to encrypt data locally. The DEK itself is encrypted by KMS and stored with the encrypted data. To decrypt, the encrypted DEK is retrieved and decrypted by KMS, which is then used to decrypt the data."
+  },
+  {
+    "question": "373. How do KMS key policies work?",
+    "answer": "KMS key policies control access to CMKs. By default, the root user has complete access to the key. Custom key policies allow defining user and role access, managing key administration, and enabling cross-account access."
+  },
+  {
+    "question": "374. What is the significance of data key caching in KMS?",
+    "answer": "Data key caching allows reusing data encryption keys to reduce the number of API calls to KMS, though it involves a security trade-off. You can define cache parameters like maximum age and size using LocalCryptoMaterialsCache."
+  },
+  {
+    "question": "375. What are some KMS request quotas and how can they be managed?",
+    "answer": "KMS request quotas are shared per account, including AWS operations on your behalf. To manage throttling, use exponential back-off or request a quota increase through AWS support."
+  },
+  {
+    "question": "376. What are the methods of encrypting objects in S3?",
+    "answer": "The methods for encrypting S3 objects are:\nSSE-S3: Server-side encryption with keys managed by AWS.\nSSE-KMS: Server-side encryption using AWS KMS for key management.\nSSE-C: Server-side encryption with customer-provided keys.\nClient-Side Encryption: Encryption done by the client before uploading to S3."
+  },
+  {
+    "question": "377. What is SSE-KMS and how does it work?",
+    "answer": "SSE-KMS is server-side encryption using AWS KMS to manage encryption keys. It involves using GenerateDataKey and Decrypt KMS API calls and requires a KMS key policy and IAM policy to authorize access. KMS API calls for SSE-KMS count against KMS limits."
+  },
+  {
+    "question": "378. How can S3 bucket policies enforce encryption and SSL?",
+    "answer": "S3 bucket policies can enforce encryption by denying uploads with incorrect or missing encryption headers. They can also enforce SSL by denying non-SSL requests."
+  },
+  {
+    "question": "379. What is AWS SSM Parameter Store?",
+    "answer": "AWS SSM Parameter Store is used for securely storing configuration and secrets. It supports optional encryption with KMS and provides version tracking, configuration management, and integration with CloudFormation."
+  },
+  {
+    "question": "380. What are the tiers of SSM Parameter Store?",
+    "answer": "The tiers are:\nStandard: Up to 10K parameters, max size 4KB per parameter, free of charge.\nAdvanced: Up to 100K parameters, max size 8KB per parameter, costs $0.05 per parameter per month, includes parameter policies."
+  },
+  {
+    "question": "381. How can parameters be retrieved from SSM Parameter Store using the CLI?",
+    "answer": "Parameters can be retrieved using the following CLI commands:\nGet parameters: aws ssm get-parameters --names /path/to/parameter\nGet parameters with decryption: aws ssm get-parameters --names /path/to/parameter --with-decryption\nGet parameters by path: aws ssm get-parameters-by-path --path /path/to/parameters --recursive"
+  },
+  {
+    "question": "382. What is AWS Secrets Manager and how does it differ from SSM Parameter Store?",
+    "answer": "AWS Secrets Manager is a service specifically for storing and managing secrets. It offers automatic secret rotation using AWS Lambda and integrates directly with RDS. It is more expensive compared to SSM Parameter Store but provides features like automatic rotation and direct RDS integration."
+  },
+  {
+    "question": "383. What are the pricing and integration features of AWS Secrets Manager?",
+    "answer": "AWS Secrets Manager costs $0.40 per secret per month and $0.05 per 10K API calls, with a 30-day free trial. It integrates with RDS, Redshift, and DocumentDB, and supports secret rotation with Lambda."
+  },
+  {
+    "question": "384. How can CloudWatch Logs be encrypted?",
+    "answer": "CloudWatch Logs can be encrypted using KMS keys. Encryption is enabled at the log group level by associating a Customer Master Key (CMK) with a log group. This can be done either when creating the log group or afterwards."
+  },
+  {
+    "question": "385. How can you associate a CMK with a CloudWatch log group?",
+    "answer": "To associate a CMK with a CloudWatch log group, you must use the CloudWatch Logs API. Use the associate-kms-key command if the log group already exists or the create-log-group command if the log group does not exist yet. This cannot be done via the CloudWatch console."
+  },
+  {
+    "question": "386. What is necessary for CodeBuild to access resources in a VPC?",
+    "answer": "CodeBuild requires a VPC configuration to access resources in a VPC."
+  },
+  {
+    "question": "387. What is a recommended practice for handling secrets in CodeBuild?",
+    "answer": "Secrets should not be stored in plaintext in environment variables. Instead, environment variables should reference parameters from AWS Systems Manager Parameter Store or secrets from AWS Secrets Manager."
+  },
+  {
+    "question": "388. What are the two ways to host an SSL certificate in AWS using ACM?",
+    "answer": "The two ways to host an SSL certificate in AWS using ACM are:\nBuying a certificate and uploading it to ACM using the CLI.\nHaving ACM provision and renew public SSL certificates at no cost."
+  },
+  {
+    "question": "389. Where can ACM load SSL certificates?",
+    "answer": "ACM can load SSL certificates onto:\nLoad balancers (including those created by Elastic Beanstalk)\nCloudFront distributions"
+  },
+  {
+    "question": "390. What types of databases does RDS support and what is it used for?",
+    "answer": "RDS supports relational databases such as PostgreSQL, MySQL, Oracle, and Aurora. It is great for OLTP (online transaction processing) and does not support horizontal scaling."
+  },
+  {
+    "question": "391. What is DynamoDB and what are its characteristics?",
+    "answer": "DynamoDB is a NoSQL database that is fully serverless. It supports key-value and document data models."
+  },
+  {
+    "question": "392. What is ElasticCache used for and what offerings are available?",
+    "answer": "ElasticCache is an in-memory database used for caching. It offers Redis and Memcached."
+  },
+  {
+    "question": "393. What is Redshift and what is it used for?",
+    "answer": "Redshift is an OLAP (online analytics processing) database used for data warehousing, data lakes, and analytics queries. It needs to be provisioned in advance."
+  },
+  {
+    "question": "394. What type of database is Neptune and what is it used for?",
+    "answer": "Neptune is a graph database used for managing and querying graph data."
+  },
+  {
+    "question": "395. What is the purpose of DMS (Database Migration Service)?",
+    "answer": "DMS is used to move data from one database to another."
+  },
+  {
+    "question": "396. What is DocumentDB and how is it managed?",
+    "answer": "DocumentDB is a managed MongoDB database provided by AWS."
+  },
+  {
+    "question": "397. What functionality does SES (Simple Email Service) provide?",
+    "answer": "SES allows sending and receiving emails using SMTP or AWS SDK."
+  },
+  {
+    "question": "398. How does SES integrate with other AWS services?",
+    "answer": "SES integrates with S3, SNS, Lambda, and IAM. IAM permissions are required to send and receive emails."
+  }
+]
